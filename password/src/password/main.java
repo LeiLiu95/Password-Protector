@@ -36,6 +36,32 @@ public class main {
 		return password;
 	}
 	
+	public static String passwordCheck(String password, int[] lengths, boolean cap, boolean special, boolean num) {
+		Random ran = new Random();
+		
+		// If number of lowercase letters is 0
+		if (lengths[0] == 0) {
+			for (int i = 0; i <= 3; i++) {
+				System.out.println(i);
+			}
+		}
+		
+		// If number of numbers is 0 and numbers are a requirement
+		if (lengths[1] == 0 && num) {
+			
+		}
+		
+		if (lengths[2] == 0 && special) {
+			
+		}
+		
+		if (lengths[3] == 0 && cap) {
+			
+		}
+		
+		return null;
+	}
+	
 	public static void main(String[] args){
 		String password1 = passwordGeneration(10, false, false, false);
 		String password2 = passwordGeneration(10, true, false, false);
