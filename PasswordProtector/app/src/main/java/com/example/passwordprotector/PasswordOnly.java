@@ -1,8 +1,6 @@
 package com.example.passwordprotector;
 
-/**
- * Created by Chris on 4/8/2017.
- */
+
 
 public class PasswordOnly extends PasswordGenerator {
 

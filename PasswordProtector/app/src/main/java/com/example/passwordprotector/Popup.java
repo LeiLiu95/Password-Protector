@@ -6,9 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.widget.EditText;
 
-/**
- * Created by Chris on 4/8/2017.
- */
+
 
 public class Popup {
     static String passphrase;

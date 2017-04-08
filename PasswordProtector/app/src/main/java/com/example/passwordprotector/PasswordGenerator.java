@@ -1,8 +1,5 @@
 package com.example.passwordprotector;
 
-/**
- * Created by Chris on 4/7/2017.
- */
 
 public abstract class PasswordGenerator {
     public Password addPassword(String name, int numLetters, boolean capLet, boolean special, boolean nums){
