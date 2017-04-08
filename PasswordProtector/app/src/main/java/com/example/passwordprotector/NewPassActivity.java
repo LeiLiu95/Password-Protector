@@ -37,7 +37,7 @@ public class NewPassActivity extends AppCompatActivity {
         PasswordOnly passwordOnly = new PasswordOnly();
         Password password = passwordOnly.addPassword(name,numLetters,capLetters,specialChars,numbers);
         String passphrase = Popup.getPassphrase(this);
-        DBHandler dbHandler = DBHandler.getInstance(this,null,null,1);
+        DBHandler dbHandler = DBHandler.getInstance(this);
         dbHandler.addAccount(password, passphrase);
     }
 }

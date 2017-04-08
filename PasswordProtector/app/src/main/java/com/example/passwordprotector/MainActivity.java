@@ -24,16 +24,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
+        passphrase = intent.getStringExtra("passphrase");
         Bundle b = intent.getExtras();
 
-        if(b!= null){
-            passphrase = (String) b.get("passphrase");
-        }
+//        if(b!= null){
+//            passphrase = (String) b.get("passphrase");
+//        }
         accountDisplay = (ListView) findViewById(R.id.accountDisplay);
         createButton = (Button)  findViewById(R.id.createButton);
         deleteButton = (Button)  findViewById(R.id.deleteButton);
         openButton = (Button)  findViewById(R.id.openButton);
-        dbHandler = DBHandler.getInstance(this,null,null,1);
+
+        dbHandler = DBHandler.getInstance(this);
         printDatabase(passphrase);
     }
     public void createButtonClicked(View view){
@@ -55,7 +57,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private void printDatabase(String passphrase){
         ArrayList<String> dbString = dbHandler.databaseToString(passphrase);
-        String[] arr = (String[]) dbString.toArray();
+        String[] arr = new String[dbString.size()];
+        for(int i = 0; i < dbString.size(); i++){
+            arr[i] = dbString.get(i);
+        }
         accountDisplay.setAdapter(new ArrayAdapter<String>(MainActivity.this,
                 android.R.layout.simple_list_item_1, arr));
     }
