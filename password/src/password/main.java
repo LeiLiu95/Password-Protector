@@ -9,34 +9,34 @@ public class main {
 	static String capString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	public static String passwordGeneration(int length, boolean cap, boolean special, boolean num){
 		String password = "";
-		Random ran = new Random();
-		
+		Random random = new Random();
+		String[] characters = {letters, numString, specialString, capString};
+		int[] lengths = {0,0,0,0};	//letters, numbers, special, capitols
+		int index = 0;
 		for(int x = 0; x<length; x+=1){
-			if(cap){
-				password+=capString.charAt(ran.nextInt(capString.length()));
-				cap=false;
-				continue;
+			index = random.nextInt(characters.length);
+			
+			if(index == 1 && num){
+				password+=numString.charAt(random.nextInt(numString.length()));
+				lengths[1]+=1;
 			}
-			else if (special){
-				password+=specialString.charAt(ran.nextInt(specialString.length()));
-				special=false;
-				continue;
+			else if (index == 2 && special){
+				password+=specialString.charAt(random.nextInt(specialString.length()));
+				lengths[2]+=1;
 			}
-			else if(num){
-				password+=numString.charAt(ran.nextInt(numString.length()));
-				num=false;
-				continue;
+			else if(index == 3 && cap){
+				password+=capString.charAt(random.nextInt(capString.length()));
+				lengths[3]+=1;
 			}
 			else{
-				password +=letters.charAt(ran.nextInt(letters.length()));
+				password +=letters.charAt(random.nextInt(letters.length()));
+				lengths[0]+=1;
 			}
 		}
 		return password;
 	}
 	
 	public static void main(String[] args){
-
-		
 		String password1 = passwordGeneration(10, false, false, false);
 		String password2 = passwordGeneration(10, true, false, false);
 		String password3 = passwordGeneration(10, true, true, false);
