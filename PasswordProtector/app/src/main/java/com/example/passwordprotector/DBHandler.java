@@ -1,7 +1,8 @@
 package com.example.passwordprotector;
 
-import android.database.sqlite.*;
-import android.database.Cursor;
+import net.sqlcipher.Cursor;
+import net.sqlcipher.database.SQLiteDatabase;
+import net.sqlcipher.database.SQLiteOpenHelper;
 import android.content.Context;
 import android.content.ContentValues;
 
@@ -49,27 +50,27 @@ public class DBHandler extends SQLiteOpenHelper{
     public void addAccount(Password pass){
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, pass.getAccountName());
-        SQLiteDatabase db = getWritableDatabase();
-        db.insert(TABLE,null,values);
-        db.close();
+      //  SQLiteDatabase db = getWritableDatabase();
+       // db.insert(TABLE,null,values);
+        //db.close();
     }
     public void deleteAccount(String name){
-        SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("DELETE FROM " +TABLE+ " WHERE " +COLUMN_NAME+ "=\"" +name+ "=\";");
+       // SQLiteDatabase db = getWritableDatabase();
+        //db.execSQL("DELETE FROM " +TABLE+ " WHERE " +COLUMN_NAME+ "=\"" +name+ "=\";");
     }
-    public String databaseToString(){
-        String dbString = "";
-        SQLiteDatabase db = getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE + " WHERE 1";
-        Cursor c = db.rawQuery(query,null);
-        c.moveToFirst();
-        while(!c.isAfterLast()){
-            if(c.getString(c.getColumnIndex("accountname"))!=null){
-                dbString += c.getString(c.getColumnIndex("accountname"));
-                dbString += "\n";
-            }
-        }
-        db.close();
-        return dbString;
-    }
+//    public String databaseToString(){
+//        String dbString = "";
+//        SQLiteDatabase db = getWritableDatabase();
+//        String query = "SELECT * FROM " + TABLE + " WHERE 1";
+//        Cursor c = db.rawQuery(query,null);
+//        c.moveToFirst();
+//        while(!c.isAfterLast()){
+//            if(c.getString(c.getColumnIndex("accountname"))!=null){
+//                dbString += c.getString(c.getColumnIndex("accountname"));
+//                dbString += "\n";
+//            }
+//        }
+//        db.close();
+//        return dbString;
+//    }
 }

@@ -27,13 +27,14 @@
         android:text="Delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button4"
+        android:id="@+id/deleteButton"
         android:layout_alignBaseline="@+id/createButton"
         android:layout_alignBottom="@+id/createButton"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="37dp"
-        android:layout_marginEnd="37dp" />
+        android:layout_marginEnd="37dp"
+        android:onClick="deleteButtonClicked" />
 
     <ListView
         android:layout_width="match_parent"
@@ -47,7 +48,7 @@
         android:text="open"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button4"
+        android:layout_below="@+id/deleteButton"
         android:layout_centerHorizontal="true"
         android:id="@+id/openButton"
         android:onClick="openButtonClicked" />

@@ -10,28 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.passwordprotector.LoginActivity">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:layout_marginTop="29dp"
-        android:id="@+id/passwordText"
-        android:layout_below="@+id/usernameText"
-        android:layout_alignLeft="@+id/usernameText"
-        android:layout_alignStart="@+id/usernameText" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Username"
-        android:ems="10"
-        android:layout_marginTop="29dp"
-        android:id="@+id/usernameText"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
     <Button
         android:text="Login"
         android:layout_width="wrap_content"
@@ -42,42 +20,33 @@
         android:id="@+id/loginButton"
         android:onClick="loginButtonClicked" />
 
-    <Button
-        android:text="Register"
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginButton"
-        android:layout_alignLeft="@+id/loginButton"
-        android:layout_alignStart="@+id/loginButton"
-        android:layout_marginTop="39dp"
-        android:id="@+id/registerButton"
-        android:onClick="registerButtonClicked" />
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_marginTop="43dp"
+        android:id="@+id/passwordText"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="OR"
+        android:text="Enter your passphrase:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <TextView
-        android:text="Username:"
+        android:text="Note: If you've already used our app, please insert the same passphrase!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/passwordText"
-        android:layout_toLeftOf="@+id/usernameText"
-        android:layout_toStartOf="@+id/usernameText"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/textView2" />
+        android:id="@+id/textView2"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:layout_below="@+id/loginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
 
-    <TextView
-        android:text="Password:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/passwordText"
-        android:layout_toLeftOf="@+id/passwordText"
-        android:layout_toStartOf="@+id/passwordText"
-        android:layout_marginTop="11dp"
-        android:id="@+id/textView3" />
 </RelativeLayout>
