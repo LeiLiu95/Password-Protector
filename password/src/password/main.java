@@ -1,5 +1,6 @@
 package password;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class main {
@@ -37,13 +38,32 @@ public class main {
 	}
 	
 	public static String passwordCheck(String password, int[] lengths, boolean cap, boolean special, boolean num) {
-		Random ran = new Random();
+		Random random = new Random();
+		String newPassword = password;
+		ArrayList<Integer> replaceableIndices = new ArrayList<Integer>();
+		
+		boolean[] replaceable = new boolean[4];
+		if (lengths[0] > 1) {
+			replaceable[0] = true;
+			replaceableIndices.add(0);
+		}
+		if (lengths[1] > 1 && num) {
+			replaceable[1] = true;
+			replaceableIndices.add(1);
+		}
+		if (lengths[2] > 1 && special) {
+			replaceable[2] = true;
+			replaceableIndices.add(2);
+		}
+		if (lengths[3] > 1 && cap) {
+			replaceable[3] = true;
+			replaceableIndices.add(3);
+		}
+		
 		
 		// If number of lowercase letters is 0
 		if (lengths[0] == 0) {
-			for (int i = 0; i <= 3; i++) {
-				System.out.println(i);
-			}
+			random.nextInt(replaceableIndices.size());
 		}
 		
 		// If number of numbers is 0 and numbers are a requirement
@@ -59,10 +79,11 @@ public class main {
 			
 		}
 		
-		return null;
+		return newPassword;
 	}
 	
 	public static void main(String[] args){
+		
 		String password1 = passwordGeneration(10, false, false, false);
 		String password2 = passwordGeneration(10, true, false, false);
 		String password3 = passwordGeneration(10, true, true, false);
@@ -70,7 +91,7 @@ public class main {
 		System.out.println(password1);
 		System.out.println(password2);
 		System.out.println(password3);
-		System.out.println(password4);
+		System.out.println(password4);		
 	}
 }
 
