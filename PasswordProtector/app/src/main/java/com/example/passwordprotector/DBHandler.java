@@ -6,6 +6,7 @@ import net.sqlcipher.database.SQLiteOpenHelper;
 import android.content.Context;
 import android.content.ContentValues;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -19,10 +20,14 @@ public class DBHandler extends SQLiteOpenHelper{
     private static DBHandler instance;
     static Object obj = new Object();
     private static Context cont;
+    File databasePath;
+    //could just set passphrase here at beginning?
+
 
     private DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.cont = context;
+        databasePath = context.getDatabasePath(DATABASE_NAME);
         SQLiteDatabase.loadLibs(context);
     }
 
@@ -72,7 +77,8 @@ public class DBHandler extends SQLiteOpenHelper{
     }
     public ArrayList<String> databaseToString(String passphrase){
         ArrayList<String> dbString = new ArrayList<>();
-        SQLiteDatabase db = getWritableDatabase(passphrase);
+
+        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(databasePath, passphrase, null);
         String query = "SELECT * FROM " + TABLE + " WHERE 1";
         Cursor c = db.rawQuery(query,null);
         c.moveToFirst();

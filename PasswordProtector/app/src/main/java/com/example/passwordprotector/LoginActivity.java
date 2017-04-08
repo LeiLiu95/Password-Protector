@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void loginButtonClicked(View view){
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("passphrase", passwordText.getText());
+        intent.putExtra("passphrase", passwordText.getText().toString());
         startActivity(intent);
     }
 

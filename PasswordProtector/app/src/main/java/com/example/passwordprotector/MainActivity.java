@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
+import net.sqlcipher.database.SQLiteDatabase;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         createButton = (Button)  findViewById(R.id.createButton);
         deleteButton = (Button)  findViewById(R.id.deleteButton);
         openButton = (Button)  findViewById(R.id.openButton);
-
+        SQLiteDatabase.loadLibs(this);
         dbHandler = DBHandler.getInstance(this);
         printDatabase(passphrase);
     }
@@ -65,3 +68,5 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, arr));
     }
 }
+
+
