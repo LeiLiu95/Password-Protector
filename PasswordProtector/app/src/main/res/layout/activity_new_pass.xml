@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_new_pass"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.passwordprotector.NewPassActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Account Name"
+        android:ems="10"
+        android:layout_marginTop="31dp"
+        android:id="@+id/accountNameText"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/specialCharBox"
+        android:layout_alignStart="@+id/specialCharBox" />
+
+    <CheckBox
+        android:text="Numbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/numbersBox"
+        android:layout_below="@+id/capLettersBox"
+        android:layout_alignLeft="@+id/capLettersBox"
+        android:layout_alignStart="@+id/capLettersBox" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_marginTop="11dp"
+        android:id="@+id/numberCharText"
+        android:layout_below="@+id/accountNameText"
+        android:layout_alignLeft="@+id/accountNameText"
+        android:layout_alignStart="@+id/accountNameText" />
+
+    <CheckBox
+        android:text="Special Characters (ie. !,@,#)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/specialCharBox"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_below="@+id/numberCharText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp" />
+
+    <CheckBox
+        android:text="Capital Letters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/capLettersBox"
+        android:layout_below="@+id/specialCharBox"
+        android:layout_alignLeft="@+id/specialCharBox"
+        android:layout_alignStart="@+id/specialCharBox" />
+
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/numbersBox"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/saveButton"
+        android:onClick="saveButtonClicked" />
+</RelativeLayout>

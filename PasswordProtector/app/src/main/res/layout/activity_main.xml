@@ -10,76 +10,37 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.passwordprotector.MainActivity">
 
-    <EditText
+    <Button
+        android:text="   New   "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:layout_below="@+id/username"
-        android:layout_alignRight="@+id/username"
-        android:layout_alignEnd="@+id/username"
-        android:layout_marginTop="31dp"
-        android:id="@+id/password" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Enter username..."
-        android:ems="10"
-        android:id="@+id/username"
+        android:layout_marginTop="29dp"
+        android:id="@+id/createButton"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp" />
-
-    <TextView
-        android:text="Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/username"
-        android:layout_alignLeft="@+id/password"
-        android:layout_alignStart="@+id/password"
-        android:layout_marginTop="12dp"
-        android:id="@+id/textView3" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:onClick="createButtonPressed" />
 
     <Button
-        android:text="LOGIN"
+        android:text="Delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/password"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_marginTop="25dp"
-        android:id="@+id/loginBTN"
-        android:onClick="loginButtonClicked" />
+        android:id="@+id/button4"
+        android:layout_alignBaseline="@+id/createButton"
+        android:layout_alignBottom="@+id/createButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="37dp"
+        android:layout_marginEnd="37dp" />
 
-    <Button
-        android:text="Create new account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:id="@+id/newAccountBTN"
-        android:layout_below="@+id/loginBTN"
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/createButton"
         android:layout_centerHorizontal="true"
-        android:onClick="newAccountButtonClicked" />
-
-    <TextView
-        android:text="OR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/loginBTN"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
-        android:id="@+id/textView4" />
-
-    <TextView
-        android:text="Username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/username"
-        android:layout_alignStart="@+id/username" />
+        android:layout_marginTop="49dp"
+        android:id="@+id/accountDisplay" />
 
 </RelativeLayout>
