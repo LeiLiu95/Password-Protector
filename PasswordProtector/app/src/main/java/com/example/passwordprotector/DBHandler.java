@@ -74,7 +74,8 @@ public class DBHandler extends SQLiteOpenHelper{
     }
     public void deleteAccount(String name, String passphrase){
         SQLiteDatabase db = getWritableDatabase(passphrase);
-        db.execSQL("DELETE FROM " +TABLE+ " WHERE " + ACCOUNT + "=\"" +name+ "=\";");
+        db.delete(TABLE, ACCOUNT + "= ?", new String[]{name});
+        //db.execSQL("DELETE FROM " +TABLE+ " WHERE " + ACCOUNT + "=\"" +name+ "=\";");
     }
 
     public String getPassword(String passphrase, String name){

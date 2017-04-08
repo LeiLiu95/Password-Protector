@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void deleteButtonClicked(View view){
-
+        dbHandler.deleteAccount(selected,passphrase);
+        printDatabase(passphrase);
     }
 
     public void openButtonClicked(View view){
