@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void resetButtonClicked(View view){
         DBHandler dbHandler = DBHandler.getInstance(this);
-        dbHandler.
+        
     }
 
 }
