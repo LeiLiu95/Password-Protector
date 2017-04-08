@@ -14,11 +14,22 @@ public class main {
 		for(int x = 0; x<length; x+=1){
 			if(cap){
 				password+=capString.charAt(ran.nextInt(capString.length()));
+				cap=false;
 				continue;
 			}
-			
-			
-			int index= ran.nextInt(26);
+			else if (special){
+				password+=specialString.charAt(ran.nextInt(specialString.length()));
+				special=false;
+				continue;
+			}
+			else if(num){
+				password+=numString.charAt(ran.nextInt(numString.length()));
+				num=false;
+				continue;
+			}
+			else{
+				password +=letters.charAt(ran.nextInt(letters.length()));
+			}
 		}
 		return password;
 	}
