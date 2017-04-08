@@ -1,5 +1,6 @@
 package com.example.passwordprotector;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,11 +16,15 @@ public class NewPassActivity extends AppCompatActivity {
     CheckBox capLettersBox;
     CheckBox numbersBox;
     Button saveButton;
+    String passphrase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_pass);
+        Intent intent = getIntent();
+        passphrase = intent.getStringExtra("passphrase");
+
         saveButton = (Button)  findViewById(R.id.saveButton);
         accountNameText = (TextView)  findViewById(R.id.accountNameText);
         numberCharText = (TextView)  findViewById(R.id.numberCharText);
@@ -36,8 +41,10 @@ public class NewPassActivity extends AppCompatActivity {
         int numLetters = Integer.parseInt(nums);
         PasswordOnly passwordOnly = new PasswordOnly();
         Password password = passwordOnly.addPassword(name,numLetters,capLetters,specialChars,numbers);
-        String passphrase = Popup.getPassphrase(this);
+
         DBHandler dbHandler = DBHandler.getInstance(this);
         dbHandler.addAccount(password, passphrase);
+
+        finish();
     }
 }

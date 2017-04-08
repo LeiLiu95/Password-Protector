@@ -15,9 +15,9 @@ public abstract class PasswordGenerator {
             params+= "no ";
         }
         if(nums){
-            params+= "yes ";
+            params+= "yes";
         }else{
-            params+= "no ";
+            params+= "no";
         }
         int size=numLetters;
         return createPassword(name,size,params);

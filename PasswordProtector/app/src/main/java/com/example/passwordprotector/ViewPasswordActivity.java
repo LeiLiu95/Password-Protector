@@ -21,16 +21,14 @@ public class ViewPasswordActivity extends AppCompatActivity {
         passwordText = (TextView) findViewById(R.id.passwordText);
         backButton = (Button)  findViewById(R.id.backButton);
         Intent intent = getIntent();
-        Bundle b = intent.getExtras();
-        String name, passphrase;
-        if(b!= null){
-            name = (String) b.get("name");
-            passphrase = (String) b.get("passphrase");
-            accountNameText.setText(name);
-        }
+        String name = intent.getStringExtra("name");
+        String passphrase = intent.getStringExtra("passphrase");
+        accountNameText.setText(name);
+        DBHandler dbHandler = DBHandler.getInstance(this);
+        String password = dbHandler.getPassword(passphrase, name);
+        passwordText.setText(password);
     }
     public void backButtonClicked(View view){
-        Intent intent = new Intent(ViewPasswordActivity.this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 }

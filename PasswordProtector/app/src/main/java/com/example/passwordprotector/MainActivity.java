@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         passphrase = intent.getStringExtra("passphrase");
-        Bundle b = intent.getExtras();
+        //Bundle b = intent.getExtras();
 
 //        if(b!= null){
 //            passphrase = (String) b.get("passphrase");
@@ -37,12 +37,13 @@ public class MainActivity extends AppCompatActivity {
         createButton = (Button)  findViewById(R.id.createButton);
         deleteButton = (Button)  findViewById(R.id.deleteButton);
         openButton = (Button)  findViewById(R.id.openButton);
-        SQLiteDatabase.loadLibs(this);
+        //SQLiteDatabase.loadLibs(this);
         dbHandler = DBHandler.getInstance(this);
         printDatabase(passphrase);
     }
     public void createButtonClicked(View view){
         Intent intent = new Intent(MainActivity.this, NewPassActivity.class);
+        intent.putExtra("passphrase", passphrase);
         startActivity(intent);
     }
 
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openButtonClicked(View view){
         final String accName = (String) accountDisplay.getSelectedItem();
-        passphrase = Popup.getPassphrase(this);
+
         Intent appInfo = new Intent(MainActivity.this, ViewPasswordActivity.class);
         appInfo.putExtra("name", accName);
         appInfo.putExtra("passphrase",passphrase);
@@ -66,6 +67,12 @@ public class MainActivity extends AppCompatActivity {
         }
         accountDisplay.setAdapter(new ArrayAdapter<String>(MainActivity.this,
                 android.R.layout.simple_list_item_1, arr));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        printDatabase(passphrase);
     }
 }
 

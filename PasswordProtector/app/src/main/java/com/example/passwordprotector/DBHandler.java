@@ -21,6 +21,7 @@ public class DBHandler extends SQLiteOpenHelper{
     static Object obj = new Object();
     private static Context cont;
     File databasePath;
+    SQLiteDatabase sqLiteDatabase;
     //could just set passphrase here at beginning?
 
 
@@ -75,18 +76,45 @@ public class DBHandler extends SQLiteOpenHelper{
         SQLiteDatabase db = getWritableDatabase(passphrase);
         db.execSQL("DELETE FROM " +TABLE+ " WHERE " + ACCOUNT + "=\"" +name+ "=\";");
     }
-    public ArrayList<String> databaseToString(String passphrase){
-        ArrayList<String> dbString = new ArrayList<>();
 
-        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(databasePath, passphrase, null);
+    public String getPassword(String passphrase, String name){
+        SQLiteDatabase db = getWritableDatabase(passphrase);
         String query = "SELECT * FROM " + TABLE + " WHERE 1";
         Cursor c = db.rawQuery(query,null);
-        c.moveToFirst();
-        while(!c.isAfterLast()){
-            if(c.getString(c.getColumnIndex("accountname"))!=null){
-                dbString.add(c.getString(c.getColumnIndex("accountname")));
-            }
+        if(c.moveToFirst()){
+            do{
+                if(c.getString(c.getColumnIndex("accountname")).equals(name)){
+                    c.close();
+                    db.close();
+                    return c.getString(c.getColumnIndex("password"));
+                }
+            }while(c.moveToNext());
         }
+        db.close();
+        c.close();
+        return null;
+    }
+
+    public ArrayList<String> databaseToString(String passphrase){
+        ArrayList<String> dbString = new ArrayList<>();
+        SQLiteDatabase db = getWritableDatabase(passphrase);
+        //SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(databasePath, passphrase, null);
+        String query = "SELECT * FROM " + TABLE + " WHERE 1";
+        Cursor c = db.rawQuery(query,null);
+        if(c.moveToFirst()){
+            do{
+                if(c.getString(c.getColumnIndex("accountname"))!=null){
+                    dbString.add(c.getString(c.getColumnIndex("accountname")));
+                }
+            }while(c.moveToNext());
+        }
+//        c.moveToFirst();
+//        while(!c.isAfterLast()){
+//            if(c.getString(c.getColumnIndex("accountname"))!=null){
+//                dbString.add(c.getString(c.getColumnIndex("accountname")));
+//            }
+//        }
+        c.close();
         db.close();
         return dbString;
     }

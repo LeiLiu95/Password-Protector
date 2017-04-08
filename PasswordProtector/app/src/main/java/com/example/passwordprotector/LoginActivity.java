@@ -9,11 +9,8 @@ import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
 
-
     TextView passwordText;
     Button loginButton;
-    Button resetButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
 
         passwordText = (TextView)  findViewById(R.id.passwordText);
         loginButton = (Button)  findViewById(R.id.loginButton);
-        resetButton = (Button)  findViewById(R.id.resetButton);
+
 
     }
 
@@ -30,11 +27,16 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("passphrase", passwordText.getText().toString());
         startActivity(intent);
+        finish();
     }
 
-    public void resetButtonClicked(View view){
-        DBHandler dbHandler = DBHandler.getInstance(this);
-        
-    }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        passwordText = null;
+        loginButton = null;
+
+    }
 }

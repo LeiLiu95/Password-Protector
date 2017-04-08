@@ -32,12 +32,13 @@
 
     <TextView
         android:text="Enter your passphrase:"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/textView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp" />
 
     <TextView
         android:text="Note: If you've already used our app, please insert the same passphrase!"
