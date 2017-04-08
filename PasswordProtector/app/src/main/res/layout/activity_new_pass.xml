@@ -14,13 +14,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Account Name"
         android:ems="10"
         android:layout_marginTop="31dp"
         android:id="@+id/accountNameText"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/specialCharBox"
-        android:layout_alignStart="@+id/specialCharBox" />
+        android:layout_alignStart="@+id/specialCharBox"
+        android:hint="Account Name" />
 
     <CheckBox
         android:text="Numbers"
@@ -40,7 +40,8 @@
         android:id="@+id/numberCharText"
         android:layout_below="@+id/accountNameText"
         android:layout_alignLeft="@+id/accountNameText"
-        android:layout_alignStart="@+id/accountNameText" />
+        android:layout_alignStart="@+id/accountNameText"
+        android:hint="Password Length" />
 
     <CheckBox
         android:text="Special Characters (ie. !,@,#)"
