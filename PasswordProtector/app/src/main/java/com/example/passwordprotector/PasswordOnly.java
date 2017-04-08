@@ -12,6 +12,8 @@ public class PasswordOnly extends PasswordGenerator {
         Password password = new Password();
         password.setAccountName(name);
         //algorithm here pls
+        //this is LOL password, pls change
+        password.setPassword("ROFLCOPTER");
         return password;
     }
 }

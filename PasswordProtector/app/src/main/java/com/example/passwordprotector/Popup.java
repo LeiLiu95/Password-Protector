@@ -14,7 +14,7 @@ public class Popup {
         AlertDialog.Builder builder= new AlertDialog.Builder(cont);
         final EditText input = new EditText(cont);
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-
+        builder.setView(input);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
