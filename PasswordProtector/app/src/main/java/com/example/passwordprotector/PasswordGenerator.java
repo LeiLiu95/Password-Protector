@@ -5,12 +5,25 @@ package com.example.passwordprotector;
  */
 
 public abstract class PasswordGenerator {
-    public Password addPassword(String label){
-        Password password;
-        int params=0;
-        int size=0;
-        password = createPassword(label,params,size);
-        return password;
+    public Password addPassword(String name, int numLetters, boolean capLet, boolean special, boolean nums){
+        String params = "";
+        if(capLet){
+            params+= "yes ";
+        }else{
+            params+= "no ";
+        }
+        if(special){
+            params+= "yes ";
+        }else{
+            params+= "no ";
+        }
+        if(nums){
+            params+= "yes ";
+        }else{
+            params+= "no ";
+        }
+        int size=numLetters;
+        return createPassword(name,size,params);
     }
-    abstract Password createPassword(String label, int params, int size);
+    abstract Password createPassword(String name, int size, String params);
 }

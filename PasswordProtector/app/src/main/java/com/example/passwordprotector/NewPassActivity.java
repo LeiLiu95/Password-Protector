@@ -28,6 +28,13 @@ public class NewPassActivity extends AppCompatActivity {
         numbersBox = (CheckBox)  findViewById(R.id.numbersBox);
     }
     public void saveButtonClicked(View view){
-
+        String name = (String) accountNameText.getText();
+        boolean specialChars = specialCharBox.isEnabled();
+        boolean capLetters = capLettersBox.isEnabled();
+        boolean numbers = numbersBox.isEnabled();
+        String nums = (String) numberCharText.getText();
+        int numLetters = Integer.parseInt(nums);
+        PasswordOnly passwordOnly = new PasswordOnly();
+        Password password = passwordOnly.addPassword(name,numLetters,capLetters,specialChars,numbers);
     }
 }

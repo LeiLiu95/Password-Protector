@@ -54,23 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openButtonClicked(View view){
         final String accName = (String) accountDisplay.getSelectedItem();
-        AlertDialog.Builder builder= new AlertDialog.Builder(this);
-        final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                passphrase = input.getText().toString();
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        builder.show();
+        passphrase = Popup.getPassphrase(this);
         Intent appInfo = new Intent(MainActivity.this, ViewPasswordActivity.class);
         appInfo.putExtra("name", accName);
         appInfo.putExtra("passphrase",passphrase);
