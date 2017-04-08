@@ -12,6 +12,7 @@ public class LoginActivity extends AppCompatActivity {
 
     TextView passwordText;
     Button loginButton;
+    Button resetButton;
 
 
     @Override
@@ -21,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
         passwordText = (TextView)  findViewById(R.id.passwordText);
         loginButton = (Button)  findViewById(R.id.loginButton);
+        resetButton = (Button)  findViewById(R.id.resetButton);
 
     }
 
@@ -28,6 +30,11 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("passphrase", passwordText.getText().toString());
         startActivity(intent);
+    }
+
+    public void resetButtonClicked(View view){
+        DBHandler dbHandler = DBHandler.getInstance(this);
+        dbHandler.
     }
 
 }
