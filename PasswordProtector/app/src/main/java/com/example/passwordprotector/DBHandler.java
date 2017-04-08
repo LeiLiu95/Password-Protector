@@ -84,9 +84,10 @@ public class DBHandler extends SQLiteOpenHelper{
         if(c.moveToFirst()){
             do{
                 if(c.getString(c.getColumnIndex("accountname")).equals(name)){
+                    String password = c.getString(c.getColumnIndex("password"));
                     c.close();
                     db.close();
-                    return c.getString(c.getColumnIndex("password"));
+                    return password;
                 }
             }while(c.moveToNext());
         }

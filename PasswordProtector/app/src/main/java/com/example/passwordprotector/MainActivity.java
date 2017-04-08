@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Button deleteButton;
     Button openButton;
     String passphrase;
+    String selected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
 //            passphrase = (String) b.get("passphrase");
 //        }
         accountDisplay = (ListView) findViewById(R.id.accountDisplay);
+        accountDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> myAdapter, View myView, int myItemInt, long mylng) {
+                selected =(String) (accountDisplay.getItemAtPosition(myItemInt));
+
+            }
+        });
         createButton = (Button)  findViewById(R.id.createButton);
         deleteButton = (Button)  findViewById(R.id.deleteButton);
         openButton = (Button)  findViewById(R.id.openButton);
@@ -48,14 +56,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void deleteButtonClicked(View view){
-        final String accName = (String) accountDisplay.getSelectedItem();
+
     }
 
     public void openButtonClicked(View view){
-        final String accName = (String) accountDisplay.getSelectedItem();
+
 
         Intent appInfo = new Intent(MainActivity.this, ViewPasswordActivity.class);
-        appInfo.putExtra("name", accName);
+        appInfo.putExtra("name", selected);
         appInfo.putExtra("passphrase",passphrase);
         startActivity(appInfo);
     }
