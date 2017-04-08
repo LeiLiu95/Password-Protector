@@ -22,8 +22,10 @@ public class ViewPasswordActivity extends AppCompatActivity {
         backButton = (Button)  findViewById(R.id.backButton);
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
+        String name, passphrase;
         if(b!= null){
-            String name = (String) b.get("name");
+            name = (String) b.get("name");
+            passphrase = (String) b.get("passphrase");
             accountNameText.setText(name);
         }
     }
