@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class NewPassActivity extends AppCompatActivity {
 
@@ -40,11 +41,15 @@ public class NewPassActivity extends AppCompatActivity {
         String nums = (String) numberCharText.getText().toString();
         int numLetters = Integer.parseInt(nums);
         PasswordOnly passwordOnly = new PasswordOnly();
-        Password password = passwordOnly.addPassword(name,numLetters,capLetters,specialChars,numbers);
-
         DBHandler dbHandler = DBHandler.getInstance(this);
-        dbHandler.addAccount(password, passphrase);
+        if(dbHandler.nameInDatabase(passphrase,name)){
+            //add a Toast that lets the user know that the account name is taken, and that they need to enter a different one
+            Toast.makeText(this, "The username -" + name + "- is taken, please enter a different username.",Toast.LENGTH_SHORT);
+        }else{
+            Password password = passwordOnly.addPassword(name,numLetters,capLetters,specialChars,numbers);
+            dbHandler.addAccount(password, passphrase);
+            finish();
+        }
 
-        finish();
     }
 }

@@ -15,8 +15,8 @@ public class DBHandler extends SQLiteOpenHelper{
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "database.db";//file where we are saving on device
     public static final String TABLE = "accounts";//name of table
-    public static final String ACCOUNT = "accountname";//
-    public static final String PASSWORD = "password";
+    public static final String ACCOUNT = "accountname";//column that contains account names
+    public static final String PASSWORD = "password";//column that contains passwords
     private static DBHandler instance;
     static Object obj = new Object();
     private static Context cont;
@@ -96,6 +96,26 @@ public class DBHandler extends SQLiteOpenHelper{
         c.close();
         return null;
     }
+
+    public boolean nameInDatabase(String passphrase, String name){
+        SQLiteDatabase db = getWritableDatabase(passphrase);
+        String query = "SELECT * FROM " + TABLE + " WHERE 1";
+        Cursor c = db.rawQuery(query,null);
+        if(c.moveToFirst()){
+            do{
+                if(c.getString(c.getColumnIndex("accountname")).equals(name)){
+
+                    c.close();
+                    db.close();
+                    return true;
+                }
+            }while(c.moveToNext());
+        }
+        db.close();
+        c.close();
+        return false;
+    }
+
 
     public ArrayList<String> databaseToString(String passphrase){
         ArrayList<String> dbString = new ArrayList<>();
