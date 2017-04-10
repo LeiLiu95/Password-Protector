@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,7 +26,17 @@ public class LoginActivity extends AppCompatActivity {
 
     public void loginButtonClicked(View view){
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("passphrase", passwordText.getText().toString());
+        String passphrase = passwordText.getText().toString();
+        while(true){
+            try{
+                DBHandler dbHandler = DBHandler.getInstance(this);
+                dbHandler.databaseToString(passphrase);
+                break;
+            }catch(Exception e){
+                Toast.makeText(this,"The passphrase entered is not correct.", Toast.LENGTH_SHORT);
+            }
+        }
+        intent.putExtra("passphrase", passphrase);
         startActivity(intent);
         finish();
     }
