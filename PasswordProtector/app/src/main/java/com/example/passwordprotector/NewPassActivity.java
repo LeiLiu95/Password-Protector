@@ -18,6 +18,7 @@ public class NewPassActivity extends AppCompatActivity {
     CheckBox numbersBox;
     Button saveButton;
     String passphrase;
+    CheckBox securityQuestionBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class NewPassActivity extends AppCompatActivity {
         specialCharBox = (CheckBox)  findViewById(R.id.specialCharBox);
         capLettersBox = (CheckBox)  findViewById(R.id.capLettersBox);
         numbersBox = (CheckBox)  findViewById(R.id.numbersBox);
+        securityQuestionBox = (CheckBox) findViewById(R.id.securityQuestionBox);
     }
     public void saveButtonClicked(View view){
         String name = (String) accountNameText.getText().toString();
