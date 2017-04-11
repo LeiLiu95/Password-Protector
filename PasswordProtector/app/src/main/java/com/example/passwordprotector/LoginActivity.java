@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         String passphrase = passwordText.getText().toString();
         while(true){
             try{
+                passphrase = passwordText.getText().toString();
                 DBHandler dbHandler = DBHandler.getInstance(this);
                 dbHandler.databaseToString(passphrase);
                 break;
