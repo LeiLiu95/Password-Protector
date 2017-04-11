@@ -27,16 +27,16 @@ public class LoginActivity extends AppCompatActivity {
     public void loginButtonClicked(View view){
         Intent intent = new Intent(this, MainActivity.class);
         String passphrase = passwordText.getText().toString();
-        while(true){
-            try{
-                passphrase = passwordText.getText().toString();
-                DBHandler dbHandler = DBHandler.getInstance(this);
-                dbHandler.databaseToString(passphrase);
-                break;
-            }catch(Exception e){
-                Toast.makeText(this,"The passphrase entered is not correct.", Toast.LENGTH_SHORT);
-            }
+        try{
+            passphrase = passwordText.getText().toString();
+            DBHandler dbHandler = DBHandler.getInstance(this);
+            dbHandler.databaseToString(passphrase);
+
+        }catch(Exception e){
+            Toast.makeText(this,"The passphrase entered is not correct.", Toast.LENGTH_SHORT);
+            return;
         }
+
         intent.putExtra("passphrase", passphrase);
         startActivity(intent);
         finish();
