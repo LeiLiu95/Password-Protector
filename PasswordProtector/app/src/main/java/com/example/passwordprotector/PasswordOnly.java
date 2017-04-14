@@ -51,6 +51,7 @@ public class PasswordOnly extends PasswordGenerator {
             }
         }
         this.lengths = lengths;
+        //return password;
         return passwordCheck(password, lengths, cap, special, num);
     }
 

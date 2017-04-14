@@ -37,9 +37,9 @@ public class NewPassActivity extends AppCompatActivity {
     }
     public void saveButtonClicked(View view){
         String name = (String) accountNameText.getText().toString();
-        boolean specialChars = specialCharBox.isEnabled();
-        boolean capLetters = capLettersBox.isEnabled();
-        boolean numbers = numbersBox.isEnabled();
+        boolean specialChars = specialCharBox.isChecked();
+        boolean capLetters = capLettersBox.isChecked();
+        boolean numbers = numbersBox.isChecked();
         String nums = (String) numberCharText.getText().toString();
         int numLetters = Integer.parseInt(nums);
         PasswordOnly passwordOnly = new PasswordOnly();
