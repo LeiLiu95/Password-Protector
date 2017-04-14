@@ -40,6 +40,7 @@ public class NewPassActivity extends AppCompatActivity {
         boolean specialChars = specialCharBox.isChecked();
         boolean capLetters = capLettersBox.isChecked();
         boolean numbers = numbersBox.isChecked();
+        boolean secQuestions = securityQuestionBox.isChecked();
         String nums = (String) numberCharText.getText().toString();
         int numLetters = Integer.parseInt(nums);
         PasswordOnly passwordOnly = new PasswordOnly();
