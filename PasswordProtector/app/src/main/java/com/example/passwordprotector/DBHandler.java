@@ -17,11 +17,11 @@ public class DBHandler extends SQLiteOpenHelper{
     public static final String TABLE = "accounts";//name of table
     public static final String ACCOUNT = "accountname";//column that contains account names
     public static final String PASSWORD = "password";//column that contains passwords
-    public static final String SECQUESTION1 = "securityquestion1";
+
     public static final String SECANSWER1 = "securityanswer1";
-    public static final String SECQUESTION2 = "securityquestion2";
+
     public static final String SECANSWER2 = "securityanswer2";
-    public static final String SECQUESTION3 = "securityquestion3";
+
     public static final String SECANSWER3 = "securityanswer3";
     private static DBHandler instance;
     static Object obj = new Object();
@@ -55,7 +55,7 @@ public class DBHandler extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         //String query = "CREATE TABLE " + TABLE + "(" + ACCOUNT + " TEXT " + PASSWORD + " TEXT "+");";
-        db.execSQL("CREATE TABLE accounts (accountname TEXT, password TEXT, securityquestion1 TEXT, securityanswer1 TEXT, securityquestion2 TEXT, securityanswer2 TEXT, securityquestion3 TEXT, securityanswer3 TEXT);");
+        db.execSQL("CREATE TABLE accounts (accountname TEXT, password TEXT, securityanswer1 TEXT, securityanswer2 TEXT, securityanswer3 TEXT);");
 
     }
 
