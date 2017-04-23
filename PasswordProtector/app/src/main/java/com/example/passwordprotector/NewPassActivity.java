@@ -64,7 +64,9 @@ public class NewPassActivity extends AppCompatActivity {
         boolean capLetters = capLettersBox.isChecked();
         boolean numbers = numbersBox.isChecked();
         boolean secQ = securityQuestionBox.isChecked();
-        String q1="", q2="", q3="";
+        String q1="";
+        String q2="";
+        String q3="";
         if(secQ){
             q1 = (String) securityQ1.getText().toString();
             q2 = (String) securityQ2.getText().toString();

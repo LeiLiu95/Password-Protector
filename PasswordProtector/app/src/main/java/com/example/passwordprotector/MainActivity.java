@@ -62,11 +62,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void openButtonClicked(View view){
 
+        if(selected != null){
+            Intent appInfo = new Intent(MainActivity.this, ViewPasswordActivity.class);
+            appInfo.putExtra("name", selected);
+            appInfo.putExtra("passphrase",passphrase);
+            startActivity(appInfo);
+        }
 
-        Intent appInfo = new Intent(MainActivity.this, ViewPasswordActivity.class);
-        appInfo.putExtra("name", selected);
-        appInfo.putExtra("passphrase",passphrase);
-        startActivity(appInfo);
     }
     private void printDatabase(String passphrase){
         ArrayList<String> dbString = dbHandler.databaseToString(passphrase);
