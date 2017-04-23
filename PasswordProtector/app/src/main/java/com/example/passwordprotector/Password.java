@@ -6,19 +6,15 @@ import java.util.ArrayList;
 public class Password {
     private String accountName;
     private String password;
-    private ArrayList<String> securityQuestions = new ArrayList<>();
+
     private ArrayList<String> securityAnswers = new ArrayList<>();
 
-    public ArrayList<String> getSecurityQuestions() {
-        return securityQuestions;
-    }
+
 
     public ArrayList<String> getSecurityAnswers() {
         return securityAnswers;
     }
-    public void setSecurityQuestions(String s){
-        securityQuestions.add(s);
-    }
+
     public void setSecurityAnswers(String s){
         securityAnswers.add(s);
     }

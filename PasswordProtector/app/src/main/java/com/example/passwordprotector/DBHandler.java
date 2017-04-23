@@ -73,8 +73,10 @@ public class DBHandler extends SQLiteOpenHelper{
 
         values.put(ACCOUNT, pass.getAccountName());
         values.put(PASSWORD, pass.getPassword());
-
-
+        ArrayList<String> secA = pass.getSecurityAnswers();
+        values.put(SECANSWER1,secA.get(0));
+        values.put(SECANSWER2,secA.get(1));
+        values.put(SECANSWER3,secA.get(2));
         db.insert(TABLE,null,values);
         db.close();
     }
@@ -84,17 +86,25 @@ public class DBHandler extends SQLiteOpenHelper{
         //db.execSQL("DELETE FROM " +TABLE+ " WHERE " + ACCOUNT + "=\"" +name+ "=\";");
     }
 
-    public String getPassword(String passphrase, String name){
+    public ArrayList<String> getPassword(String passphrase, String name){
         SQLiteDatabase db = getWritableDatabase(passphrase);
         String query = "SELECT * FROM " + TABLE + " WHERE 1";
         Cursor c = db.rawQuery(query,null);
+        ArrayList<String> stuff = new ArrayList<>();
         if(c.moveToFirst()){
             do{
                 if(c.getString(c.getColumnIndex("accountname")).equals(name)){
                     String password = c.getString(c.getColumnIndex("password"));
+                    stuff.add(password);
+                    password = c.getString(c.getColumnIndex("securityanswer1"));
+                    stuff.add(password);
+                    password = c.getString(c.getColumnIndex("securityanswer2"));
+                    stuff.add(password);
+                    password = c.getString(c.getColumnIndex("securityanswer3"));
+                    stuff.add(password);
                     c.close();
                     db.close();
-                    return password;
+                    return stuff;
                 }
             }while(c.moveToNext());
         }
@@ -102,6 +112,7 @@ public class DBHandler extends SQLiteOpenHelper{
         c.close();
         return null;
     }
+
 
     public boolean nameInDatabase(String passphrase, String name){
         SQLiteDatabase db = getWritableDatabase(passphrase);
