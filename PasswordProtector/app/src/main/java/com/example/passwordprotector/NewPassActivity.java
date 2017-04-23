@@ -13,6 +13,9 @@ public class NewPassActivity extends AppCompatActivity {
 
     TextView accountNameText;
     TextView numberCharText;
+    TextView securityQ1;
+    TextView securityQ2;
+    TextView securityQ3;
     CheckBox specialCharBox;
     CheckBox capLettersBox;
     CheckBox numbersBox;
@@ -30,17 +33,44 @@ public class NewPassActivity extends AppCompatActivity {
         saveButton = (Button)  findViewById(R.id.saveButton);
         accountNameText = (TextView)  findViewById(R.id.accountNameText);
         numberCharText = (TextView)  findViewById(R.id.numberCharText);
+        securityQ1 = (TextView) findViewById(R.id.securityQ1);
+        securityQ2 = (TextView) findViewById(R.id.securityQ2);
+        securityQ3 = (TextView) findViewById(R.id.securityQ3);
+        securityQ1.setVisibility(View.INVISIBLE);
+        securityQ2.setVisibility(View.INVISIBLE);
+        securityQ3.setVisibility(View.INVISIBLE);
         specialCharBox = (CheckBox)  findViewById(R.id.specialCharBox);
         capLettersBox = (CheckBox)  findViewById(R.id.capLettersBox);
         numbersBox = (CheckBox)  findViewById(R.id.numbersBox);
         securityQuestionBox = (CheckBox) findViewById(R.id.securityQuestionBox);
+        securityQuestionBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(((CheckBox)v).isChecked()){
+                    securityQ1.setVisibility(View.VISIBLE);
+                    securityQ2.setVisibility(View.VISIBLE);
+                    securityQ3.setVisibility(View.VISIBLE);
+                }else{
+                    securityQ1.setVisibility(View.INVISIBLE);
+                    securityQ2.setVisibility(View.INVISIBLE);
+                    securityQ3.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
     }
     public void saveButtonClicked(View view){
         String name = (String) accountNameText.getText().toString();
         boolean specialChars = specialCharBox.isChecked();
         boolean capLetters = capLettersBox.isChecked();
         boolean numbers = numbersBox.isChecked();
-        boolean secQuestions = securityQuestionBox.isChecked();
+        boolean secQ = securityQuestionBox.isChecked();
+        String q1="", q2="", q3="";
+        if(secQ){
+            q1 = (String) securityQ1.getText().toString();
+            q2 = (String) securityQ2.getText().toString();
+            q3 = (String) securityQ3.getText().toString();
+        }
+
         String nums = (String) numberCharText.getText().toString();
         int numLetters = Integer.parseInt(nums);
         PasswordOnly passwordOnly = new PasswordOnly();
@@ -50,6 +80,9 @@ public class NewPassActivity extends AppCompatActivity {
             Toast.makeText(this, "The username -" + name + "- is taken, please enter a different username.",Toast.LENGTH_SHORT);
         }else{
             Password password = passwordOnly.addPassword(name,numLetters,capLetters,specialChars,numbers);
+            password.setSecurityAnswers(q1);
+            password.setSecurityAnswers(q2);
+            password.setSecurityAnswers(q3);
             dbHandler.addAccount(password, passphrase);
             finish();
         }

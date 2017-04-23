@@ -77,10 +77,44 @@
         android:id="@+id/securityQuestionBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/numbersBox"
-        android:layout_alignStart="@+id/numbersBox"
-        android:layout_below="@+id/saveButton"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="14dp"
         android:checked="false"
-        android:text="Add security questions" />
+        android:text="Add security questions"
+        android:layout_below="@+id/saveButton"
+        android:layout_alignLeft="@+id/numbersBox"
+        android:layout_alignStart="@+id/numbersBox" />
+
+    <EditText
+        android:id="@+id/securityQ1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/securityQuestionBox"
+        android:layout_alignStart="@+id/securityQuestionBox"
+        android:layout_below="@+id/securityQuestionBox"
+        android:ems="10"
+        android:hint="Security Answer 1"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/securityQ2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/securityQ1"
+        android:layout_alignRight="@+id/securityQ1"
+        android:layout_below="@+id/securityQ1"
+        android:ems="10"
+        android:hint="Security Answer 2"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/securityQ3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/securityQ2"
+        android:layout_alignStart="@+id/securityQ2"
+        android:layout_below="@+id/securityQ2"
+        android:ems="10"
+        android:hint="Security Answer 3"
+        android:inputType="textPersonName" />
+
 </RelativeLayout>
