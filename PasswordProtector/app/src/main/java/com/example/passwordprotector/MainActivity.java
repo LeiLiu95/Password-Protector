@@ -30,11 +30,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         passphrase = intent.getStringExtra("passphrase");
-        //Bundle b = intent.getExtras();
-
-//        if(b!= null){
-//            passphrase = (String) b.get("passphrase");
-//        }
         accountDisplay = (ListView) findViewById(R.id.accountDisplay);
         accountDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> myAdapter, View myView, int myItemInt, long mylng) {
@@ -45,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         createButton = (Button)  findViewById(R.id.createButton);
         deleteButton = (Button)  findViewById(R.id.deleteButton);
         openButton = (Button)  findViewById(R.id.openButton);
-        //SQLiteDatabase.loadLibs(this);
         dbHandler = DBHandler.getInstance(this);
         printDatabase(passphrase);
     }

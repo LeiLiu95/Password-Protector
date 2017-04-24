@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
             dbHandler.databaseToString(passphrase);
 
         }catch(Exception e){
-            Toast.makeText(this,"The passphrase entered is not correct.", Toast.LENGTH_SHORT);
+            Toast.makeText(LoginActivity.this,"The passphrase entered is not correct.", Toast.LENGTH_SHORT).show();
             return;
         }
 

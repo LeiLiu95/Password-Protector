@@ -79,7 +79,7 @@ public class NewPassActivity extends AppCompatActivity {
         DBHandler dbHandler = DBHandler.getInstance(this);
         if(dbHandler.nameInDatabase(passphrase,name)){
             //add a Toast that lets the user know that the account name is taken, and that they need to enter a different one
-            Toast.makeText(this, "The username -" + name + "- is taken, please enter a different username.",Toast.LENGTH_SHORT);
+            Toast.makeText(NewPassActivity.this, "The username -" + name + "- is taken, please enter a different username.",Toast.LENGTH_SHORT).show();
         }else{
             Password password = passwordOnly.addPassword(name,numLetters,capLetters,specialChars,numbers);
             password.setSecurityAnswers(q1);
