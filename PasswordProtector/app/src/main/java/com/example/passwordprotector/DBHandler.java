@@ -153,4 +153,9 @@ public class DBHandler extends SQLiteOpenHelper{
         db.close();
         return dbString;
     }
+
+    public void editPassword(String passphrase, String oldUser, String newUser, Password pass){
+        
+    }
+
 }

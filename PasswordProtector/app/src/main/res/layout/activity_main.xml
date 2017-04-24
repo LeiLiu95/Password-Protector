@@ -50,18 +50,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/openButton"
         android:onClick="openButtonClicked"
-        android:layout_below="@+id/createButton"
-        android:layout_alignLeft="@+id/createButton"
-        android:layout_alignStart="@+id/createButton" />
-
-    <Button
-        android:id="@+id/renameButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/deleteButton"
-        android:layout_alignStart="@+id/deleteButton"
         android:layout_below="@+id/deleteButton"
-        android:onClick="renameButtonClicked"
-        android:text="Rename" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

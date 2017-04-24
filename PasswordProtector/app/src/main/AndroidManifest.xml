@@ -25,6 +25,7 @@
         </activity>
         <activity android:name=".NewPassActivity" />
         <activity android:name=".ViewPasswordActivity" />
+        <activity android:name=".EditActivity"></activity>
     </application>
 
 </manifest>

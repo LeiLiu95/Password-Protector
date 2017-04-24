@@ -14,11 +14,12 @@ public class ViewPasswordActivity extends AppCompatActivity {
     TextView accountNameText;
     TextView passwordText;
     Button backButton;
-    Button resetButton;
+    Button editButton;
     TextView secAnswer1;
     TextView secAnswer2;
     TextView secAnswer3;
     Password password;
+    String passphrase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +28,13 @@ public class ViewPasswordActivity extends AppCompatActivity {
         accountNameText = (TextView) findViewById(R.id.accountNameText);
         passwordText = (TextView) findViewById(R.id.passwordText);
         backButton = (Button)  findViewById(R.id.backButton);
-        resetButton = (Button) findViewById(R.id.resetButton);
+        editButton = (Button) findViewById(R.id.editButton);
         secAnswer1 = (TextView) findViewById(R.id.secAnswer1);
         secAnswer2 = (TextView) findViewById(R.id.secAnswer2);
         secAnswer3 = (TextView) findViewById(R.id.secAnswer3);
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
-        String passphrase = intent.getStringExtra("passphrase");
+        passphrase = intent.getStringExtra("passphrase");
         accountNameText.setText(name);
         DBHandler dbHandler = DBHandler.getInstance(this);
         password = dbHandler.getPassword(passphrase, name);
@@ -53,7 +54,14 @@ public class ViewPasswordActivity extends AppCompatActivity {
         finish();
     }
 
-    public void resetButtonClicked(View view){
-
+    public void editButtonClicked(View view){
+        Intent intent = new Intent(ViewPasswordActivity.this, EditActivity.class);
+        ArrayList<String> list = password.getSecurityAnswers();
+        intent.putExtra("accountname",password.getAccountName());
+        intent.putExtra("secanswer1", list.get(0));
+        intent.putExtra("secanswer2", list.get(1));
+        intent.putExtra("secanswer3", list.get(2));
+        intent.putExtra("passphrase", passphrase);
+        startActivity(intent);
     }
 }
