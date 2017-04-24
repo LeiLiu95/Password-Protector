@@ -14,9 +14,11 @@ public class ViewPasswordActivity extends AppCompatActivity {
     TextView accountNameText;
     TextView passwordText;
     Button backButton;
+    Button resetButton;
     TextView secAnswer1;
     TextView secAnswer2;
     TextView secAnswer3;
+    Password password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class ViewPasswordActivity extends AppCompatActivity {
         accountNameText = (TextView) findViewById(R.id.accountNameText);
         passwordText = (TextView) findViewById(R.id.passwordText);
         backButton = (Button)  findViewById(R.id.backButton);
+        resetButton = (Button) findViewById(R.id.resetButton);
         secAnswer1 = (TextView) findViewById(R.id.secAnswer1);
         secAnswer2 = (TextView) findViewById(R.id.secAnswer2);
         secAnswer3 = (TextView) findViewById(R.id.secAnswer3);
@@ -33,7 +36,7 @@ public class ViewPasswordActivity extends AppCompatActivity {
         String passphrase = intent.getStringExtra("passphrase");
         accountNameText.setText(name);
         DBHandler dbHandler = DBHandler.getInstance(this);
-        Password password = dbHandler.getPassword(passphrase, name);
+        password = dbHandler.getPassword(passphrase, name);
         passwordText.setText(password.getPassword());
         ArrayList<String> secA = password.getSecurityAnswers();
         if(secA.size() != 0){
@@ -48,5 +51,9 @@ public class ViewPasswordActivity extends AppCompatActivity {
     }
     public void backButtonClicked(View view){
         finish();
+    }
+
+    public void resetButtonClicked(View view){
+
     }
 }

@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         accountDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> myAdapter, View myView, int myItemInt, long mylng) {
                 selected =(String) (accountDisplay.getItemAtPosition(myItemInt));
-
+                myView.setSelected(true);
             }
         });
         createButton = (Button)  findViewById(R.id.createButton);
