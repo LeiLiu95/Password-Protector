@@ -20,7 +20,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/specialCharBox"
         android:layout_alignStart="@+id/specialCharBox"
-        android:hint="Account Name" />
+        android:hint="Account Name"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <CheckBox
         android:text="Numbers"
@@ -68,19 +70,18 @@
         android:text="Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/numbersBox"
-        android:layout_centerHorizontal="true"
         android:id="@+id/saveButton"
-        android:onClick="saveButtonClicked" />
+        android:onClick="saveButtonClicked"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <CheckBox
         android:id="@+id/securityQuestionBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
         android:checked="false"
         android:text="Add security questions"
-        android:layout_below="@+id/saveButton"
+        android:layout_below="@+id/numbersBox"
         android:layout_alignLeft="@+id/numbersBox"
         android:layout_alignStart="@+id/numbersBox" />
 
@@ -93,7 +94,9 @@
         android:layout_below="@+id/securityQuestionBox"
         android:ems="10"
         android:hint="Security Answer 1"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:id="@+id/securityQ2"
@@ -104,7 +107,9 @@
         android:layout_below="@+id/securityQ1"
         android:ems="10"
         android:hint="Security Answer 2"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:layout_alignLeft="@+id/securityQ1"
+        android:layout_alignStart="@+id/securityQ1" />
 
     <EditText
         android:id="@+id/securityQ3"
@@ -115,6 +120,8 @@
         android:layout_below="@+id/securityQ2"
         android:ems="10"
         android:hint="Security Answer 3"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
