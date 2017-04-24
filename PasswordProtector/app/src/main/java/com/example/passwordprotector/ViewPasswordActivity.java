@@ -33,11 +33,18 @@ public class ViewPasswordActivity extends AppCompatActivity {
         String passphrase = intent.getStringExtra("passphrase");
         accountNameText.setText(name);
         DBHandler dbHandler = DBHandler.getInstance(this);
-        ArrayList<String> password = dbHandler.getPassword(passphrase, name);
-        passwordText.setText(password.get(0));
-        secAnswer1.setText(password.get(1));
-        secAnswer2.setText(password.get(2));
-        secAnswer3.setText(password.get(3));
+        Password password = dbHandler.getPassword(passphrase, name);
+        passwordText.setText(password.getPassword());
+        ArrayList<String> secA = password.getSecurityAnswers();
+        if(secA.size() != 0){
+            secAnswer1.setText(secA.get(0));
+            secAnswer2.setText(secA.get(1));
+            secAnswer3.setText(secA.get(2));
+        }
+
+//        secAnswer1.setText(password.get(1));
+//        secAnswer2.setText(password.get(2));
+//        secAnswer3.setText(password.get(3));
     }
     public void backButtonClicked(View view){
         finish();
