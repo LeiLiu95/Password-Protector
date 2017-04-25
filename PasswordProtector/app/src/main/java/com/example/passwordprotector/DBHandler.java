@@ -154,17 +154,20 @@ public class DBHandler extends SQLiteOpenHelper{
         return dbString;
     }
 
-    public void editPassword(String passphrase, String oldUser, String newUser, Password pass){
-        SQLiteDatabase db = getWritableDatabase(passphrase);
-        ContentValues cv = new ContentValues();
-        ArrayList<String> list = pass.getSecurityAnswers();
-        cv.put(ACCOUNT, newUser);
-        cv.put(PASSWORD, pass.getPassword());
-        cv.put(SECANSWER1, list.get(0));
-        cv.put(SECANSWER2, list.get(1));
-        cv.put(SECANSWER3, list.get(2));
-        db.update(TABLE,cv,"accountname = " + oldUser, null);
-        db.close();
+//    public void editPassword(String passphrase, String oldUser, String newUser, Password pass){
+//        SQLiteDatabase db = getWritableDatabase(passphrase);
+//        ContentValues cv = new ContentValues();
+//        ArrayList<String> list = pass.getSecurityAnswers();
+//        cv.put(ACCOUNT, newUser);
+//        cv.put(PASSWORD, pass.getPassword());
+//        cv.put(SECANSWER1, list.get(0));
+//        cv.put(SECANSWER2, list.get(1));
+//        cv.put(SECANSWER3, list.get(2));
+//        //db.update(TABLE,cv,"accountname LIKE " + oldUser , null);
+//        db.close();
+//    }
+    public void editPassword(String passphrase, Password pass, String oldUser){
+        deleteAccount(oldUser,passphrase);
+        addAccount(pass,passphrase);
     }
-
 }

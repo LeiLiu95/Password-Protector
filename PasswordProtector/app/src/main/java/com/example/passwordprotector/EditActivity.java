@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class EditActivity extends AppCompatActivity {
 
     TextView newAccountNameBox;
@@ -21,7 +23,7 @@ public class EditActivity extends AppCompatActivity {
     CheckBox numBox;
     CheckBox specCharBox;
     CheckBox capLetterBox;
-    String passphrase, accountName, secAnswer1, secAnswer2, secAnswer3;
+    String passphrase, accountName, secAnswer1, secAnswer2, secAnswer3, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class EditActivity extends AppCompatActivity {
         secAnswer1 = intent.getStringExtra("secanswer1");
         secAnswer2 = intent.getStringExtra("secanswer2");
         secAnswer3 = intent.getStringExtra("secanswer3");
+        password = intent.getStringExtra("password");
 
         newAccountNameBox = (TextView) findViewById(R.id.newAccountNameBox);
         passwordLengthBox = (TextView) findViewById(R.id.passwordLengthBox);
@@ -53,10 +56,49 @@ public class EditActivity extends AppCompatActivity {
     }
     public void saveButtonClicked(View view){
         PasswordOnly passwordOnly = new PasswordOnly();
-        int num = Integer.parseInt(passwordLengthBox.getText().toString());
-        Password password = passwordOnly.createPassword(newAccountNameBox.getText().toString(), num, capLetterBox.isChecked(), specCharBox.isChecked(), numBox.isChecked());
+        String s = passwordLengthBox.getText().toString();
         DBHandler dbHandler = DBHandler.getInstance(this);
-        dbHandler.editPassword(passphrase, accountName, newAccountNameBox.getText().toString(), password);
+        if(!s.equals("")){
+            int num = Integer.parseInt(s);
+            Password password = passwordOnly.createPassword(newAccountNameBox.getText().toString(), num, capLetterBox.isChecked(), specCharBox.isChecked(), numBox.isChecked());
+            ArrayList<String> list = new ArrayList<>();
+            list.add(secAnswer1);
+            list.add(secAnswer2);
+            list.add(secAnswer3);
+            if(secAnswer1.equals(answer1Text.getText().toString())){
+                list.set(0, answer1Text.getText().toString());
+            }
+            if(secAnswer2.equals(answer2Text.getText().toString())){
+                list.set(1, answer2Text.getText().toString());
+            }
+            if(secAnswer3.equals(answer3Text.getText().toString())){
+                list.set(2, answer3Text.getText().toString());
+            }
+            password.addSecutityAnswers(list);
+            dbHandler.editPassword(passphrase,password,accountName);
+        }else{
+            Password password = new Password();
+            password.setAccountName(accountName);
+            ArrayList<String> list = new ArrayList<>();
+            list.add(secAnswer1);
+            list.add(secAnswer2);
+            list.add(secAnswer3);
+            if(!accountName.equals(newAccountNameBox.getText().toString())){
+                password.setAccountName(newAccountNameBox.getText().toString());
+            }
+            if(secAnswer1.equals(answer1Text.getText().toString())){
+                list.set(0, answer1Text.getText().toString());
+            }
+            if(secAnswer2.equals(answer2Text.getText().toString())){
+                list.set(1, answer2Text.getText().toString());
+            }
+            if(secAnswer3.equals(answer3Text.getText().toString())){
+                list.set(2, answer3Text.getText().toString());
+            }
+            password.addSecutityAnswers(list);
+            dbHandler.editPassword(passphrase,password,accountName);
+        }
+
         finish();
     }
 }

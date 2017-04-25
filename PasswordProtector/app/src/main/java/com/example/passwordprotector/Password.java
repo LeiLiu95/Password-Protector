@@ -18,6 +18,9 @@ public class Password {
     public void setSecurityAnswers(String s){
         securityAnswers.add(s);
     }
+    public void addSecutityAnswers(ArrayList<String> list){
+        securityAnswers = list;
+    }
 
     public Password() {}
 

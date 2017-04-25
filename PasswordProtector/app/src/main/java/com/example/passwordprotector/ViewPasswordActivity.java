@@ -62,6 +62,8 @@ public class ViewPasswordActivity extends AppCompatActivity {
         intent.putExtra("secanswer2", list.get(1));
         intent.putExtra("secanswer3", list.get(2));
         intent.putExtra("passphrase", passphrase);
+        intent.putExtra("password", password.getPassword());
         startActivity(intent);
+        finish();
     }
 }
