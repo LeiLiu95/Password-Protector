@@ -13,6 +13,12 @@ public class main {
 	public String passwordGeneration(int length, boolean cap, boolean special, boolean num){
 		String password = "";
 		Random random = new Random();
+		if(length<6){
+			length=6;
+		}
+		else if(length>20){
+			length=20;
+		}
 		String[] characters = {letters, numString, specialString, capString};
 		int[] lengths = {0,0,0,0};	//letters, numbers, special, capitals
 		int index = 0;
@@ -169,10 +175,10 @@ public class main {
 	}
 	public static void main(String[] args){
 		main mainTest = new main();
-		String password1 = mainTest.passwordGeneration(10, false, false, false);
-		String password2 = mainTest.passwordGeneration(10, true, false, false);
-		String password3 = mainTest.passwordGeneration(10, true, true, false);
-		String password4 = mainTest.passwordGeneration(10, true, true, true);
+		String password1 = mainTest.passwordGeneration(6, false, false, false);
+		String password2 = mainTest.passwordGeneration(6, true, false, false);
+		String password3 = mainTest.passwordGeneration(6, true, true, false);
+		String password4 = mainTest.passwordGeneration(6, true, true, true);
 		System.out.println(password1);
 		System.out.println(password2);
 		System.out.println(password3);

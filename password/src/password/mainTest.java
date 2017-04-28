@@ -80,5 +80,22 @@ public class mainTest {
 		}
 		assertEquals(testCases * 4, counter);
 	}
-
+	
+	@Test
+	public void testLength(){	//test to check if the length of the password is correct
+		main test = new main();
+		String password;
+		for(int i =0; i<=1000; i+=1){
+			password = test.passwordGeneration(i, true, true, true);
+			if(i<=6){
+				assertEquals(6, password.length());
+			}
+			else if(i>=20){
+				assertEquals(20, password.length());
+			}
+			else{
+				assertEquals(i, password.length());
+			}
+		}
+	}
 }
