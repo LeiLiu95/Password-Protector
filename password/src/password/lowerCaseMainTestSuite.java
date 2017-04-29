@@ -19,15 +19,24 @@ public class lowerCaseMainTestSuite {
 	@BeforeClass 
 	public static void populate(){
 		HashSet<Character> caps = new HashSet<Character>();
-		HashSet<String> special = new HashSet<String>();
+		HashSet<Character> special = new HashSet<Character>();
 		HashSet<Character> nums = new HashSet<Character>();
 		
 		for(int i = 0; i < numss.length(); i++){
 			nums.add(numss.charAt(i));
 		}
+		for(int j = 0; j < specials.length(); j++){
+			special.add(specials.charAt(j));
+		}
 		Iterator<Character> i = nums.iterator();
 		while(i.hasNext()){
 			char current = i.next();
+			System.out.print(current);
+		}
+		System.out.println();
+		Iterator<Character> j = special.iterator();
+		while(j.hasNext()){
+			char current = j.next();
 			System.out.print(current);
 		}
 	}
