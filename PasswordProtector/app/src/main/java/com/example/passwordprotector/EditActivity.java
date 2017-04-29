@@ -64,8 +64,8 @@ public class EditActivity extends AppCompatActivity {
         }
         else if(!s.equals("")){
             int num = Integer.parseInt(s);
-            if(num < 4){
-                Toast.makeText(EditActivity.this,"Please set password length to greater than 4", Toast.LENGTH_SHORT).show();
+            if(num < 8){
+                Toast.makeText(EditActivity.this,"Please set password length to greater than 8", Toast.LENGTH_SHORT).show();
             }else if(num > 32){
                 Toast.makeText(EditActivity.this,"Please set password length to less than 32", Toast.LENGTH_SHORT).show();
             }else{

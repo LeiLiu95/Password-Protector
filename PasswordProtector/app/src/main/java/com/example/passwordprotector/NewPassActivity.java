@@ -84,8 +84,8 @@ public class NewPassActivity extends AppCompatActivity {
         DBHandler dbHandler = DBHandler.getInstance(this);
         if(name.equals("")){
             Toast.makeText(NewPassActivity.this,"Please name the account.", Toast.LENGTH_SHORT).show();
-        }else if(numLetters < 4){
-            Toast.makeText(NewPassActivity.this,"Please set password length to greater than 4", Toast.LENGTH_SHORT).show();
+        }else if(numLetters < 8){
+            Toast.makeText(NewPassActivity.this,"Please set password length to greater than 8", Toast.LENGTH_SHORT).show();
         }else if(numLetters > 32){
             Toast.makeText(NewPassActivity.this,"Please set password length to less than 32", Toast.LENGTH_SHORT).show();
         }
