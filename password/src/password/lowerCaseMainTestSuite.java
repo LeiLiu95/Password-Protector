@@ -72,14 +72,46 @@ public class lowerCaseMainTestSuite {
 		for(int i = 0; i < testCases; i++){
 			String password = testMain.passwordGeneration(20, true, false, false);
 			count++;
-			System.out.println(password);
-			
-			assertTrue(hasCaps(password));
+			//System.out.println(password);
+			//assertTrue(hasCaps(password));
 			assertFalse(hasSpecial(password));
 			assertFalse(hasNums(password));
-			System.out.println(count);
+			//System.out.println(count);
 		}
 	}
+	
+	// Tests lowercase, uppercase, and special characters only
+		@Test
+		public void testLUS() {
+			main testMain = new main();
+			int count = 0;
+			for(int i = 0; i < testCases; i++){
+				String password = testMain.passwordGeneration(20, true, true, false);
+				count++;
+				//System.out.println(password);
+				//assertTrue(hasCaps(password));
+				//assertTrue(hasSpecial(password));
+				assertFalse(hasNums(password));
+				//System.out.println(count);
+			}
+		}
+		
+	// Tests lowercase, uppercase, and number characters only
+		@Test
+		public void testLUSN() {
+			main testMain = new main();
+			int count = 0;
+			for(int i = 0; i < testCases; i++){
+				String password = testMain.passwordGeneration(20, true, false, true);
+				count++;
+				System.out.println(password);
+				assertTrue(hasCaps(password));
+				assertFalse(hasSpecial(password));
+				assertTrue(hasNums(password));
+				System.out.println(count);
+			}
+		}
+	
 	
 	
 	private boolean hasCaps(String pass){
