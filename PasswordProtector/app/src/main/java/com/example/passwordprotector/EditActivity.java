@@ -77,14 +77,14 @@ public class EditActivity extends AppCompatActivity {
             password.addSecutityAnswers(list);
             dbHandler.editPassword(passphrase,password,accountName);
         }else{
-            Password password = new Password();
-            password.setAccountName(accountName);
+            Password pass = new Password();
+            pass.setAccountName(accountName);
             ArrayList<String> list = new ArrayList<>();
             list.add(secAnswer1);
             list.add(secAnswer2);
             list.add(secAnswer3);
             if(!accountName.equals(newAccountNameBox.getText().toString())){
-                password.setAccountName(newAccountNameBox.getText().toString());
+                pass.setAccountName(newAccountNameBox.getText().toString());
             }
             if(secAnswer1.equals(answer1Text.getText().toString())){
                 list.set(0, answer1Text.getText().toString());
@@ -95,8 +95,9 @@ public class EditActivity extends AppCompatActivity {
             if(secAnswer3.equals(answer3Text.getText().toString())){
                 list.set(2, answer3Text.getText().toString());
             }
-            password.addSecutityAnswers(list);
-            dbHandler.editPassword(passphrase,password,accountName);
+            pass.addSecutityAnswers(list);
+            pass.setPassword(password);
+            dbHandler.editPassword(passphrase,pass,accountName);
         }
 
         finish();
