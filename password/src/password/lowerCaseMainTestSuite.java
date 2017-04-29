@@ -58,7 +58,9 @@ public class lowerCaseMainTestSuite {
 		main testMain = new main();
 		for(int i = 0; i < testCases; i++){
 			String password = testMain.passwordGeneration(20, false, false, false);
-
+			assertFalse(hasCaps(password));
+			assertFalse(hasSpecial(password));
+			assertFalse(hasNums(password));
 		}
 	}
 	
