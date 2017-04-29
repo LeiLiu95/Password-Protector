@@ -71,20 +71,22 @@ public class lowerCaseMainTestSuite {
 		int count = 0;
 		for(int i = 0; i < testCases; i++){
 			String password = testMain.passwordGeneration(20, true, false, false);
-			System.out.println(password);
 			count++;
+			System.out.println(password);
+			
 			assertTrue(hasCaps(password));
 			assertFalse(hasSpecial(password));
 			assertFalse(hasNums(password));
 			System.out.println(count);
 		}
-		
 	}
 	
 	
 	private boolean hasCaps(String pass){
-		for(int i = 0; i < pass.length(); i++){
-			if(caps.contains(pass.charAt(i))){
+		Iterator<Character> i = caps.iterator();
+		while(i.hasNext()){
+			char current = i.next();
+			if(pass.indexOf(current) != -1){
 				return true;
 			}
 		}
@@ -92,8 +94,10 @@ public class lowerCaseMainTestSuite {
 	}
 	
 	private boolean hasSpecial(String pass){
-		for(int i = 0; i < pass.length(); i++){
-			if(special.contains(pass.charAt(i))){
+		Iterator<Character> i = special.iterator();
+		while(i.hasNext()){
+			char current = i.next();
+			if(pass.indexOf(current) != -1){
 				return true;
 			}
 		}
@@ -101,8 +105,10 @@ public class lowerCaseMainTestSuite {
 	}
 	
 	private boolean hasNums(String pass){
-		for(int i = 0; i < pass.length(); i++){
-			if(nums.contains(pass.charAt(i))){
+		Iterator<Character> i = nums.iterator();
+		while(i.hasNext()){
+			char current = i.next();
+			if(pass.indexOf(current) != -1){
 				return true;
 			}
 		}
