@@ -59,7 +59,7 @@ public class NewPassActivity extends AppCompatActivity {
         });
     }
     public void saveButtonClicked(View view){
-        String name = (String) accountNameText.getText().toString();
+        String name =  accountNameText.getText().toString();
         boolean specialChars = specialCharBox.isChecked();
         boolean capLetters = capLettersBox.isChecked();
         boolean numbers = numbersBox.isChecked();
@@ -68,16 +68,28 @@ public class NewPassActivity extends AppCompatActivity {
         String q2="";
         String q3="";
         if(secQ){
-            q1 = (String) securityQ1.getText().toString();
-            q2 = (String) securityQ2.getText().toString();
-            q3 = (String) securityQ3.getText().toString();
+            q1 = securityQ1.getText().toString();
+            q2 = securityQ2.getText().toString();
+            q3 = securityQ3.getText().toString();
+        }
+        int numLetters=0;
+        try{
+            String nums = numberCharText.getText().toString();
+            numLetters = Integer.parseInt(nums);
+        }catch(Exception e){
+            Toast.makeText(NewPassActivity.this,"Please insert a valid number", Toast.LENGTH_SHORT).show();
         }
 
-        String nums = (String) numberCharText.getText().toString();
-        int numLetters = Integer.parseInt(nums);
         PasswordOnly passwordOnly = new PasswordOnly();
         DBHandler dbHandler = DBHandler.getInstance(this);
-        if(dbHandler.nameInDatabase(passphrase,name)){
+        if(name.equals("")){
+            Toast.makeText(NewPassActivity.this,"Please name the account.", Toast.LENGTH_SHORT).show();
+        }else if(numLetters < 4){
+            Toast.makeText(NewPassActivity.this,"Please set password length to greater than 4", Toast.LENGTH_SHORT).show();
+        }else if(numLetters > 32){
+            Toast.makeText(NewPassActivity.this,"Please set password length to less than 32", Toast.LENGTH_SHORT).show();
+        }
+        else if(dbHandler.nameInDatabase(passphrase,name)){
             //add a Toast that lets the user know that the account name is taken, and that they need to enter a different one
             Toast.makeText(NewPassActivity.this, "The username -" + name + "- is taken, please enter a different username.",Toast.LENGTH_SHORT).show();
         }else{

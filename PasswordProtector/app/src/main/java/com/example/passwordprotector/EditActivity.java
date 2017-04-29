@@ -64,22 +64,29 @@ public class EditActivity extends AppCompatActivity {
         }
         else if(!s.equals("")){
             int num = Integer.parseInt(s);
-            Password password = passwordOnly.createPassword(newAccountNameBox.getText().toString(), num, capLetterBox.isChecked(), specCharBox.isChecked(), numBox.isChecked());
-            ArrayList<String> list = new ArrayList<>();
-            list.add(secAnswer1);
-            list.add(secAnswer2);
-            list.add(secAnswer3);
-            if(secAnswer1.equals(answer1Text.getText().toString())){
-                list.set(0, answer1Text.getText().toString());
+            if(num < 4){
+                Toast.makeText(EditActivity.this,"Please set password length to greater than 4", Toast.LENGTH_SHORT).show();
+            }else if(num > 32){
+                Toast.makeText(EditActivity.this,"Please set password length to less than 32", Toast.LENGTH_SHORT).show();
+            }else{
+                Password password = passwordOnly.createPassword(newAccountNameBox.getText().toString(), num, capLetterBox.isChecked(), specCharBox.isChecked(), numBox.isChecked());
+                ArrayList<String> list = new ArrayList<>();
+                list.add(secAnswer1);
+                list.add(secAnswer2);
+                list.add(secAnswer3);
+                if(secAnswer1.equals(answer1Text.getText().toString())){
+                    list.set(0, answer1Text.getText().toString());
+                }
+                if(secAnswer2.equals(answer2Text.getText().toString())){
+                    list.set(1, answer2Text.getText().toString());
+                }
+                if(secAnswer3.equals(answer3Text.getText().toString())){
+                    list.set(2, answer3Text.getText().toString());
+                }
+                password.addSecutityAnswers(list);
+                dbHandler.editPassword(passphrase,password,accountName);
             }
-            if(secAnswer2.equals(answer2Text.getText().toString())){
-                list.set(1, answer2Text.getText().toString());
-            }
-            if(secAnswer3.equals(answer3Text.getText().toString())){
-                list.set(2, answer3Text.getText().toString());
-            }
-            password.addSecutityAnswers(list);
-            dbHandler.editPassword(passphrase,password,accountName);
+
         }else{
             Password pass = new Password();
             pass.setAccountName(accountName);
