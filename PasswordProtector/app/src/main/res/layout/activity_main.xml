@@ -28,13 +28,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/deleteButton"
-        android:layout_alignBaseline="@+id/createButton"
-        android:layout_alignBottom="@+id/createButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="37dp"
-        android:layout_marginEnd="37dp"
-        android:onClick="deleteButtonClicked" />
+        android:onClick="deleteButtonClicked"
+        android:layout_above="@+id/accountDisplay"
+        android:layout_toRightOf="@+id/openButton"
+        android:layout_toEndOf="@+id/openButton"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp" />
 
     <ListView
         android:layout_width="match_parent"
@@ -50,7 +49,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/openButton"
         android:onClick="openButtonClicked"
-        android:layout_below="@+id/deleteButton"
+        android:layout_above="@+id/accountDisplay"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
