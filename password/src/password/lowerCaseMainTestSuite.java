@@ -58,6 +58,7 @@ public class lowerCaseMainTestSuite {
 		main testMain = new main();
 		for(int i = 0; i < testCases; i++){
 			String password = testMain.passwordGeneration(20, false, false, false);
+
 		}
 	}
 	
@@ -75,6 +76,17 @@ public class lowerCaseMainTestSuite {
 	
 	private boolean hasSpecial(String pass){
 		Iterator<Character> i = special.iterator();
+		while(i.hasNext()){
+			char current = i.next();
+			if(pass.indexOf(current) != -1){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean hasNums(String pass){
+		Iterator<Character> i = nums.iterator();
 		while(i.hasNext()){
 			char current = i.next();
 			if(pass.indexOf(current) != -1){
