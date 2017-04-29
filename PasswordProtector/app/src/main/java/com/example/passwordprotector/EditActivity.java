@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -58,7 +59,10 @@ public class EditActivity extends AppCompatActivity {
         PasswordOnly passwordOnly = new PasswordOnly();
         String s = passwordLengthBox.getText().toString();
         DBHandler dbHandler = DBHandler.getInstance(this);
-        if(!s.equals("")){
+        if(newAccountNameBox.getText().toString().equals("")){
+            Toast.makeText(EditActivity.this,"No account was selected. Please select an account to open.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!s.equals("")){
             int num = Integer.parseInt(s);
             Password password = passwordOnly.createPassword(newAccountNameBox.getText().toString(), num, capLetterBox.isChecked(), specCharBox.isChecked(), numBox.isChecked());
             ArrayList<String> list = new ArrayList<>();

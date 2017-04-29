@@ -60,41 +60,35 @@ public class NewPassActivity extends AppCompatActivity {
     }
     public void saveButtonClicked(View view){
         String name = (String) accountNameText.getText().toString();
-        String ans1 = (String) securityQ1.getText().toString();
-        String ans2 = (String) securityQ1.getText().toString();
-        String ans3 = (String) securityQ1.getText().toString();
-        if(name.contains(" ") || ans1.contains(" ") || ans2.contains(" ") || ans3.contains(" ")){
-            Toast.makeText(NewPassActivity.this, "Do not include spaces in the username or security answers.",Toast.LENGTH_SHORT).show();
-        }else{
-            boolean specialChars = specialCharBox.isChecked();
-            boolean capLetters = capLettersBox.isChecked();
-            boolean numbers = numbersBox.isChecked();
-            boolean secQ = securityQuestionBox.isChecked();
-            String q1="";
-            String q2="";
-            String q3="";
-            if(secQ){
-                q1 = (String) securityQ1.getText().toString();
-                q2 = (String) securityQ2.getText().toString();
-                q3 = (String) securityQ3.getText().toString();
-            }
-
-            String nums = (String) numberCharText.getText().toString();
-            int numLetters = Integer.parseInt(nums);
-            PasswordOnly passwordOnly = new PasswordOnly();
-            DBHandler dbHandler = DBHandler.getInstance(this);
-            if(dbHandler.nameInDatabase(passphrase,name)){
-                //add a Toast that lets the user know that the account name is taken, and that they need to enter a different one
-                Toast.makeText(NewPassActivity.this, "The username -" + name + "- is taken, please enter a different username.",Toast.LENGTH_SHORT).show();
-            }else{
-                Password password = passwordOnly.addPassword(name,numLetters,capLetters,specialChars,numbers);
-                password.setSecurityAnswers(q1);
-                password.setSecurityAnswers(q2);
-                password.setSecurityAnswers(q3);
-                dbHandler.addAccount(password, passphrase);
-                finish();
-            }
+        boolean specialChars = specialCharBox.isChecked();
+        boolean capLetters = capLettersBox.isChecked();
+        boolean numbers = numbersBox.isChecked();
+        boolean secQ = securityQuestionBox.isChecked();
+        String q1="";
+        String q2="";
+        String q3="";
+        if(secQ){
+            q1 = (String) securityQ1.getText().toString();
+            q2 = (String) securityQ2.getText().toString();
+            q3 = (String) securityQ3.getText().toString();
         }
+
+        String nums = (String) numberCharText.getText().toString();
+        int numLetters = Integer.parseInt(nums);
+        PasswordOnly passwordOnly = new PasswordOnly();
+        DBHandler dbHandler = DBHandler.getInstance(this);
+        if(dbHandler.nameInDatabase(passphrase,name)){
+            //add a Toast that lets the user know that the account name is taken, and that they need to enter a different one
+            Toast.makeText(NewPassActivity.this, "The username -" + name + "- is taken, please enter a different username.",Toast.LENGTH_SHORT).show();
+        }else{
+            Password password = passwordOnly.addPassword(name,numLetters,capLetters,specialChars,numbers);
+            password.setSecurityAnswers(q1);
+            password.setSecurityAnswers(q2);
+            password.setSecurityAnswers(q3);
+            dbHandler.addAccount(password, passphrase);
+            finish();
+        }
+
 
 
     }

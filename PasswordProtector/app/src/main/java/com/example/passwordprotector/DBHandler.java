@@ -48,7 +48,6 @@ public class DBHandler extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //String query = "CREATE TABLE " + TABLE + "(" + ACCOUNT + " TEXT " + PASSWORD + " TEXT "+");";
         db.execSQL("CREATE TABLE accounts ( accountname TEXT, password TEXT, securityanswerone TEXT, securityanswertwo TEXT, securityanswerthree TEXT)");
 
     }
@@ -74,16 +73,11 @@ public class DBHandler extends SQLiteOpenHelper{
     public void deleteAccount(String name, String passphrase){
         SQLiteDatabase db = getWritableDatabase(passphrase);
         db.delete(TABLE, ACCOUNT + "= ?", new String[]{name});
-        //db.execSQL("DELETE FROM " +TABLE+ " WHERE " + ACCOUNT + "=\"" +name+ "=\";");
     }
 
     public Password getPassword(String passphrase, String name){
         SQLiteDatabase db = getWritableDatabase(passphrase);
-        //String query = "SELECT * FROM " + TABLE + " WHERE 1";
         String query = " accountname LIKE ?";
-        //Cursor c = db.rawQuery("SELECT accountname, password, securityanswerone, securityanswertwo, securityanswerthree FROM accounts WHERE accountname = " + name, null);
-
-        //Cursor c = db.rawQuery(query,null);
         Cursor c = db.query(TABLE, COLUMNS, query, new String[] {name + "%"},null,null,null);
         Password password = new Password();
         if(c != null){
@@ -94,16 +88,6 @@ public class DBHandler extends SQLiteOpenHelper{
         password.setSecurityAnswers(c.getString(c.getColumnIndex("securityanswerone")));
         password.setSecurityAnswers(c.getString(3));
         password.setSecurityAnswers(c.getString(4));
-
-//        if(c.moveToFirst()){
-//            do{
-//                password.setAccountName(name);
-//                password.setPassword(c.getString(c.getColumnIndex("password")));
-//                password.setSecurityAnswers(c.getString(c.getColumnIndex("securityanswerone")));
-//                password.setSecurityAnswers(c.getString(c.getColumnIndex("securityanswertwo")));
-//                password.setSecurityAnswers(c.getString(c.getColumnIndex("securityanswerthree")));
-//            }while(c.moveToNext());
-//        }
         db.close();
         c.close();
         return password;
@@ -133,7 +117,6 @@ public class DBHandler extends SQLiteOpenHelper{
     public ArrayList<String> databaseToString(String passphrase){
         ArrayList<String> dbString = new ArrayList<>();
         SQLiteDatabase db = getWritableDatabase(passphrase);
-        //SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(databasePath, passphrase, null);
         String query = "SELECT * FROM " + TABLE + " WHERE 1";
         Cursor c = db.rawQuery(query,null);
         if(c.moveToFirst()){
@@ -143,29 +126,12 @@ public class DBHandler extends SQLiteOpenHelper{
                 }
             }while(c.moveToNext());
         }
-//        c.moveToFirst();
-//        while(!c.isAfterLast()){
-//            if(c.getString(c.getColumnIndex("accountname"))!=null){
-//                dbString.add(c.getString(c.getColumnIndex("accountname")));
-//            }
-//        }
+
         c.close();
         db.close();
         return dbString;
     }
 
-//    public void editPassword(String passphrase, String oldUser, String newUser, Password pass){
-//        SQLiteDatabase db = getWritableDatabase(passphrase);
-//        ContentValues cv = new ContentValues();
-//        ArrayList<String> list = pass.getSecurityAnswers();
-//        cv.put(ACCOUNT, newUser);
-//        cv.put(PASSWORD, pass.getPassword());
-//        cv.put(SECANSWER1, list.get(0));
-//        cv.put(SECANSWER2, list.get(1));
-//        cv.put(SECANSWER3, list.get(2));
-//        //db.update(TABLE,cv,"accountname LIKE " + oldUser , null);
-//        db.close();
-//    }
     public void editPassword(String passphrase, Password pass, String oldUser){
         deleteAccount(oldUser,passphrase);
         addAccount(pass,passphrase);

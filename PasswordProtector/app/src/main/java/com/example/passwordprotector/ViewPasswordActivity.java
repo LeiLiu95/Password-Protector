@@ -45,10 +45,6 @@ public class ViewPasswordActivity extends AppCompatActivity {
             secAnswer2.setText(secA.get(1));
             secAnswer3.setText(secA.get(2));
         }
-
-//        secAnswer1.setText(password.get(1));
-//        secAnswer2.setText(password.get(2));
-//        secAnswer3.setText(password.get(3));
     }
     public void backButtonClicked(View view){
         finish();
