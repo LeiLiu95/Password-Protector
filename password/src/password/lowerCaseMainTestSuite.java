@@ -72,6 +72,16 @@ public class lowerCaseMainTestSuite {
 		}
 		return false;
 	}
-
+	
+	private boolean hasSpecial(String pass){
+		Iterator<Character> i = special.iterator();
+		while(i.hasNext()){
+			char current = i.next();
+			if(pass.indexOf(current) != -1){
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
