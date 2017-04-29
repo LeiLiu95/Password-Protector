@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import net.sqlcipher.database.SQLiteDatabase;
 
@@ -50,8 +51,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void deleteButtonClicked(View view){
-        dbHandler.deleteAccount(selected,passphrase);
-        printDatabase(passphrase);
+        if(selected != null){
+            dbHandler.deleteAccount(selected,passphrase);
+            printDatabase(passphrase);
+        }else{
+            Toast.makeText(MainActivity.this,"No account was selected. Please select an account to delete.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void openButtonClicked(View view){
@@ -61,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
             appInfo.putExtra("name", selected);
             appInfo.putExtra("passphrase",passphrase);
             startActivity(appInfo);
+        }else{
+            Toast.makeText(MainActivity.this,"No account was selected. Please select an account to open.", Toast.LENGTH_SHORT).show();
         }
 
     }
