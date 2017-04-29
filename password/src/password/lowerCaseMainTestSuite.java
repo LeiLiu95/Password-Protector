@@ -28,6 +28,10 @@ public class lowerCaseMainTestSuite {
 		for(int j = 0; j < specials.length(); j++){
 			special.add(specials.charAt(j));
 		}
+		for(int k = 0; k < capss.length(); k++){
+			caps.add(capss.charAt(k));
+		}
+		
 		Iterator<Character> i = nums.iterator();
 		while(i.hasNext()){
 			char current = i.next();
@@ -37,6 +41,12 @@ public class lowerCaseMainTestSuite {
 		Iterator<Character> j = special.iterator();
 		while(j.hasNext()){
 			char current = j.next();
+			System.out.print(current);
+		}
+		System.out.println();
+		Iterator<Character> k = caps.iterator();
+		while(k.hasNext()){
+			char current = k.next();
 			System.out.print(current);
 		}
 	}
