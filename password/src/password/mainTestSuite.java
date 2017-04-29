@@ -63,7 +63,43 @@ public class mainTestSuite {
 			assertFalse(hasNums(password));
 		}
 	}
+
+	// Tests lowercase and number characters only
+	@Test
+	public void testLN() {
+		main testMain = new main();
+		for(int i = 0; i < testCases; i++){
+			String password = testMain.passwordGeneration(20, false, false, true);
+			assertFalse(hasCaps(password));
+			assertFalse(hasSpecial(password));
+			//assertTrue(hasNums(password));
+		}
+	}
+
+	// Tests lowercase and number characters only
+	@Test
+	public void testLS() {
+		main testMain = new main();
+		for(int i = 0; i < testCases; i++){
+			String password = testMain.passwordGeneration(20, false, true, false);
+			assertFalse(hasCaps(password));
+			//assertTrue(hasSpecial(password));
+			assertFalse(hasNums(password));
+		}
+	}
 	
+	// Tests lowercase and number characters only
+	@Test
+	public void testLSN() {
+		main testMain = new main();
+		for(int i = 0; i < testCases; i++){
+			String password = testMain.passwordGeneration(20, false, true, true);
+			assertFalse(hasCaps(password));
+			//assertTrue(hasSpecial(password));
+			//assertTrue(hasNums(password));
+		}
+	}
+
 	// Tests lowercase and uppercase characters only
 	@Test
 	public void testLU() {
@@ -80,40 +116,52 @@ public class mainTestSuite {
 		}
 	}
 	
+	// Tests lowercase and number characters only
+	@Test
+	public void testLUN() {
+		main testMain = new main();
+		for(int i = 0; i < testCases; i++){
+			String password = testMain.passwordGeneration(20, true, false, true);
+			//assertTrue(hasCaps(password));
+			assertFalse(hasSpecial(password));
+			//assertTrue(hasNums(password));
+		}
+	}
+
 	// Tests lowercase, uppercase, and special characters only
-		@Test
-		public void testLUS() {
-			main testMain = new main();
-			int count = 0;
-			for(int i = 0; i < testCases; i++){
-				String password = testMain.passwordGeneration(20, true, true, false);
-				count++;
-				//System.out.println(password);
-				//assertTrue(hasCaps(password));
-				//assertTrue(hasSpecial(password));
-				assertFalse(hasNums(password));
-				//System.out.println(count);
-			}
+	@Test
+	public void testLUS() {
+		main testMain = new main();
+		int count = 0;
+		for(int i = 0; i < testCases; i++){
+			String password = testMain.passwordGeneration(20, true, true, false);
+			count++;
+			//System.out.println(password);
+			//assertTrue(hasCaps(password));
+			//assertTrue(hasSpecial(password));
+			assertFalse(hasNums(password));
+			//System.out.println(count);
 		}
-		
+	}
+
 	// Tests lowercase, uppercase, and number characters only
-		@Test
-		public void testLUSN() {
-			main testMain = new main();
-			int count = 0;
-			for(int i = 0; i < testCases; i++){
-				String password = testMain.passwordGeneration(20, true, false, true);
-				count++;
-				System.out.println(password);
-				assertTrue(hasCaps(password));
-				assertFalse(hasSpecial(password));
-				assertTrue(hasNums(password));
-				System.out.println(count);
-			}
+	@Test
+	public void testLUSN() {
+		main testMain = new main();
+		int count = 0;
+		for(int i = 0; i < testCases; i++){
+			String password = testMain.passwordGeneration(20, true, false, true);
+			count++;
+			System.out.println(password);
+			assertTrue(hasCaps(password));
+			assertFalse(hasSpecial(password));
+			assertTrue(hasNums(password));
+			System.out.println(count);
 		}
-	
-	
-	
+	}
+
+
+
 	private boolean hasCaps(String pass){
 		Iterator<Character> i = caps.iterator();
 		while(i.hasNext()){
@@ -124,7 +172,7 @@ public class mainTestSuite {
 		}
 		return false;
 	}
-	
+
 	private boolean hasSpecial(String pass){
 		Iterator<Character> i = special.iterator();
 		while(i.hasNext()){
@@ -135,7 +183,7 @@ public class mainTestSuite {
 		}
 		return false;
 	}
-	
+
 	private boolean hasNums(String pass){
 		Iterator<Character> i = nums.iterator();
 		while(i.hasNext()){
