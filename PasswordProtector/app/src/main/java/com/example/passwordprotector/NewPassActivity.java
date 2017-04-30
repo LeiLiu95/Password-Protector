@@ -27,15 +27,17 @@ public class NewPassActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_pass);
+        //retreiving data sent from main activity
         Intent intent = getIntent();
         passphrase = intent.getStringExtra("passphrase");
-
+        //initializing ui stuff
         saveButton = (Button)  findViewById(R.id.saveButton);
         accountNameText = (TextView)  findViewById(R.id.accountNameText);
         numberCharText = (TextView)  findViewById(R.id.numberCharText);
         securityQ1 = (TextView) findViewById(R.id.securityQ1);
         securityQ2 = (TextView) findViewById(R.id.securityQ2);
         securityQ3 = (TextView) findViewById(R.id.securityQ3);
+        //setting these to invisible unless the checkbox is selected
         securityQ1.setVisibility(View.INVISIBLE);
         securityQ2.setVisibility(View.INVISIBLE);
         securityQ3.setVisibility(View.INVISIBLE);
@@ -43,6 +45,7 @@ public class NewPassActivity extends AppCompatActivity {
         capLettersBox = (CheckBox)  findViewById(R.id.capLettersBox);
         numbersBox = (CheckBox)  findViewById(R.id.numbersBox);
         securityQuestionBox = (CheckBox) findViewById(R.id.securityQuestionBox);
+        //when checkbox is clicked the text entries become visible
         securityQuestionBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +61,7 @@ public class NewPassActivity extends AppCompatActivity {
             }
         });
     }
+    
     public void saveButtonClicked(View view){
         String name =  accountNameText.getText().toString();
         boolean specialChars = specialCharBox.isChecked();
