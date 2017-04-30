@@ -10,7 +10,7 @@ public class main {
 	static String capString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	private int[] lengths;
 	
-	public String passwordGeneration(int length, boolean cap, boolean special, boolean num){
+	public String passwordGeneration(int length, boolean cap, boolean special, boolean num){	//method that takes input to run an algorithm to generate a password
 		String password = "";
 		Random random = new Random();
 		if(length<6){
