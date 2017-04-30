@@ -13,12 +13,14 @@ public class main {
 	public String passwordGeneration(int length, boolean cap, boolean special, boolean num){	//method that takes input to run an algorithm to generate a password
 		String password = "";
 		Random random = new Random();
+		/*		this code is removed for length check since it is done on the android studio UI side
 		if(length<6){
 			length=6;
 		}
 		else if(length>20){
 			length=20;
 		}
+		*/
 		String[] characters = {letters, numString, specialString, capString};
 		int[] lengths = {0,0,0,0};	//letters, numbers, special, capitals
 		int index = 0;
