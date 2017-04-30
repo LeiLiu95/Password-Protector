@@ -25,26 +25,7 @@ public class main {
 		String[] characters = {letters, numString, specialString, capString};	//an array made for all possible characters
 		int[] lengths = {0,0,0,0};	//letters, numbers, special, capitals
 		int index = 0;
-		for(int x = 0; x<length; x+=1){	//for loop done until the passed length of the required password
-			index = random.nextInt(characters.length);	//random number used to get the next value from array
-			
-			if(index == 1 && num){	//if case for numbers
-				password+=numString.charAt(random.nextInt(numString.length()));
-				lengths[1]+=1;
-			}
-			else if (index == 2 && special){	//if case for special characters
-				password+=specialString.charAt(random.nextInt(specialString.length()));
-				lengths[2]+=1;
-			}
-			else if(index == 3 && cap){		//if case for capital letters
-				password+=capString.charAt(random.nextInt(capString.length()));
-				lengths[3]+=1;
-			}
-			else{	//if case for lower case letters
-				password +=letters.charAt(random.nextInt(letters.length()));
-				lengths[0]+=1;
-			}
-		}
+		
 		this.lengths = lengths;	//set the objects length as the current length
 		return passwordCheck(password, lengths, cap, special, num);	//final method to check if all password requirements were met
 	}
