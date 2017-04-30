@@ -26,7 +26,7 @@ public class main {
 		int[] lengths = {0,0,0,0};	//letters, numbers, special, capitals
 		int index = 0;
 		for(int x = 0; x<length; x+=1){	//for loop done until the passed length of the required password
-			index = random.nextInt(characters.length);
+			index = random.nextInt(characters.length);	//random number used to get the next value from array
 			
 			if(index == 1 && num){
 				password+=numString.charAt(random.nextInt(numString.length()));
