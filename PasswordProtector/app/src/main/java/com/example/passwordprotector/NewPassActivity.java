@@ -11,17 +11,17 @@ import android.widget.Toast;
 
 public class NewPassActivity extends AppCompatActivity {
 
-    TextView accountNameText;
-    TextView numberCharText;
-    TextView securityQ1;
-    TextView securityQ2;
-    TextView securityQ3;
-    CheckBox specialCharBox;
-    CheckBox capLettersBox;
-    CheckBox numbersBox;
-    Button saveButton;
-    String passphrase;
-    CheckBox securityQuestionBox;
+    TextView accountNameText; //input for name of account
+    TextView numberCharText; //input for length of password
+    TextView securityQ1; //input for security answers
+    TextView securityQ2; //^^
+    TextView securityQ3; //^^
+    CheckBox specialCharBox; //checkbox for whether special characters are in password
+    CheckBox capLettersBox; //checkbox for whether capital letters are in password
+    CheckBox numbersBox; //checkbox for whether numbers are in password
+    Button saveButton; //button to save password
+    String passphrase; //passphrase for database encryption
+    CheckBox securityQuestionBox; //checkbox for whether user wants to save security questions
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
