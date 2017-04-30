@@ -50,20 +50,23 @@ public class ViewPasswordActivity extends AppCompatActivity {
             secAnswer3.setText(secA.get(2));
         }
     }
+    //called when back button is clicked
     public void backButtonClicked(View view){
-        finish();
+        finish();//goes back to main activity
     }
-
+    //called when edit button is clicked
     public void editButtonClicked(View view){
+        //making new intent to go to edit activity
         Intent intent = new Intent(ViewPasswordActivity.this, EditActivity.class);
         ArrayList<String> list = password.getSecurityAnswers();
+        //adding data to send
         intent.putExtra("accountname",password.getAccountName());
         intent.putExtra("secanswer1", list.get(0));
         intent.putExtra("secanswer2", list.get(1));
         intent.putExtra("secanswer3", list.get(2));
         intent.putExtra("passphrase", passphrase);
         intent.putExtra("password", password.getPassword());
-        startActivity(intent);
-        finish();
+        startActivity(intent);//starting edit activity
+        finish();//ending this activity
     }
 }
