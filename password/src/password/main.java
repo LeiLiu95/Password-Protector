@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class main {
-	static String letters = "abcdefghijklmnopqrstuvwxyz";
+	static String letters = "abcdefghijklmnopqrstuvwxyz";	//global statements that are used for password generation criteria
 	static String numString = "0123456789";
 	static String specialString = "!@#$%^&*()?";
 	static String capString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -21,10 +21,11 @@ public class main {
 			length=20;
 		}
 		*/
-		String[] characters = {letters, numString, specialString, capString};
+		
+		String[] characters = {letters, numString, specialString, capString};	//an array made for all possible characters
 		int[] lengths = {0,0,0,0};	//letters, numbers, special, capitals
 		int index = 0;
-		for(int x = 0; x<length; x+=1){
+		for(int x = 0; x<length; x+=1){	//for loop done until the passed length of the required password
 			index = random.nextInt(characters.length);
 			
 			if(index == 1 && num){
@@ -184,7 +185,11 @@ public class main {
 		System.out.println(password1);
 		System.out.println(password2);
 		System.out.println(password3);
-		System.out.println(password4);		
+		System.out.println(password4);
+		for(int i =0; i<=1000; i+=1){
+			password1=mainTest.passwordGeneration(10, true, false, false);
+			System.out.println(password1);
+		}
 	}
 }
 
