@@ -17,33 +17,38 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView accountDisplay;
-    DBHandler dbHandler;
-    Button createButton;
-    Button deleteButton;
-    Button openButton;
-    String passphrase;
-    String selected;
+    ListView accountDisplay; //listview for displaying the list of accounts
+    DBHandler dbHandler; //handler object used for database manipulation
+    Button createButton; //button to create new account
+    Button deleteButton; //button used to open account and get information for that account
+    Button openButton; //button used to edit which ever account is selected
+    String passphrase; //passphrase for database encryption
+    String selected; //string for whichever account is selected in listview
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //receiving information from login activity
         Intent intent = getIntent();
         passphrase = intent.getStringExtra("passphrase");
+        //initializing ui stuff
         accountDisplay = (ListView) findViewById(R.id.accountDisplay);
+        //method for setting selected string to correct account whenever a list item is selected
         accountDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> myAdapter, View myView, int myItemInt, long mylng) {
                 selected =(String) (accountDisplay.getItemAtPosition(myItemInt));
                 myView.setSelected(true);
             }
         });
+
         createButton = (Button)  findViewById(R.id.createButton);
         deleteButton = (Button)  findViewById(R.id.deleteButton);
         openButton = (Button)  findViewById(R.id.openButton);
         dbHandler = DBHandler.getInstance(this);
         printDatabase(passphrase);
     }
+    
     public void createButtonClicked(View view){
         Intent intent = new Intent(MainActivity.this, NewPassActivity.class);
         intent.putExtra("passphrase", passphrase);
@@ -61,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openButtonClicked(View view){
-
         if(selected != null){
             Intent appInfo = new Intent(MainActivity.this, ViewPasswordActivity.class);
             appInfo.putExtra("name", selected);
@@ -81,12 +85,9 @@ public class MainActivity extends AppCompatActivity {
         accountDisplay.setAdapter(new ArrayAdapter<String>(MainActivity.this,
                 android.R.layout.simple_list_item_1, arr));
     }
-
     @Override
     protected void onResume() {
         super.onResume();
         printDatabase(passphrase);
     }
 }
-
-
