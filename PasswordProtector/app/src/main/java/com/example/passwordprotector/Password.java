@@ -1,16 +1,19 @@
+
 package com.example.passwordprotector;
 
 
 import java.util.ArrayList;
 
 public class Password {
-    private String accountName;
-    private String password;
-
+    private String accountName;//account name
+    private String password;//password
+    //list of security answers
     private ArrayList<String> securityAnswers = new ArrayList<>();
 
 
+    //getters and setters for the above variables
 
+    
     public ArrayList<String> getSecurityAnswers() {
         return securityAnswers;
     }
