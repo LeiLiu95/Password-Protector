@@ -22,10 +22,11 @@ public class ViewPasswordActivity extends AppCompatActivity {
     Password password; //password object
     String passphrase; //passphrase for database encryption
 
-    @Override
+@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_password);
+        //initializing ui stuff
         accountNameText = (TextView) findViewById(R.id.accountNameText);
         passwordText = (TextView) findViewById(R.id.passwordText);
         backButton = (Button)  findViewById(R.id.backButton);
@@ -33,12 +34,14 @@ public class ViewPasswordActivity extends AppCompatActivity {
         secAnswer1 = (TextView) findViewById(R.id.secAnswer1);
         secAnswer2 = (TextView) findViewById(R.id.secAnswer2);
         secAnswer3 = (TextView) findViewById(R.id.secAnswer3);
+        //retrieving data sent from main activity
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
         passphrase = intent.getStringExtra("passphrase");
+        //setting the data to the proper views
         accountNameText.setText(name);
-        DBHandler dbHandler = DBHandler.getInstance(this);
-        password = dbHandler.getPassword(passphrase, name);
+        DBHandler dbHandler = DBHandler.getInstance(this); //instance of handler of databse
+        password = dbHandler.getPassword(passphrase, name); //getting the password for data for view
         passwordText.setText(password.getPassword());
         ArrayList<String> secA = password.getSecurityAnswers();
         if(secA.size() != 0){
