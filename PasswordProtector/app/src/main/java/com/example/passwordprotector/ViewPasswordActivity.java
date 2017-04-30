@@ -1,3 +1,4 @@
+
 package com.example.passwordprotector;
 
 import android.content.Intent;
@@ -11,15 +12,15 @@ import java.util.ArrayList;
 
 public class ViewPasswordActivity extends AppCompatActivity {
 
-    TextView accountNameText;
-    TextView passwordText;
-    Button backButton;
-    Button editButton;
-    TextView secAnswer1;
-    TextView secAnswer2;
-    TextView secAnswer3;
-    Password password;
-    String passphrase;
+    TextView accountNameText; //account name view
+    TextView passwordText; //password view
+    Button backButton; //button to return to main activity
+    Button editButton; //button to edit the account
+    TextView secAnswer1; //security answer views
+    TextView secAnswer2; //^^
+    TextView secAnswer3; //^^
+    Password password; //password object
+    String passphrase; //passphrase for database encryption
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
