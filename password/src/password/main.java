@@ -45,8 +45,8 @@ public class main {
 				lengths[0]+=1;
 			}
 		}
-		this.lengths = lengths;
-		return passwordCheck(password, lengths, cap, special, num);
+		this.lengths = lengths;	//set the objects length as the current length
+		return passwordCheck(password, lengths, cap, special, num);	//final method to check if all password requirements were met
 	}
 
 	public String passwordCheck(String password, int[] lengths, boolean cap, boolean special, boolean num) {
