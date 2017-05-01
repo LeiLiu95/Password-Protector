@@ -60,57 +60,57 @@ public class PasswordOnly extends PasswordGenerator {
         String newPassword = password;
         int templengths[] = lengths;
 
-        ArrayList<Integer> replaceableTypes = updateReplaceableTypes(lengths, cap, special, num);
+        ArrayList<Integer> replaceableTypes = updateReplaceableTypes(templengths, cap, special, num);
 
         // If number of lowercase letters is 0
-        if (lengths[0] == 0) {
+        if (templengths[0] == 0) {
             int randomTypeIndex = random.nextInt(replaceableTypes.size());
             int randomType = replaceableTypes.get(randomTypeIndex);
-            char[] temp = replaceCharacter(password, random, newPassword, randomType, 0);
+            char[] temp = replaceCharacter(newPassword, random, randomType, 0);
             newPassword = String.valueOf(temp);
 
-            lengths[0] = lengths[0] + 1;
-            lengths[randomType] = lengths[randomType] - 1;
-            replaceableTypes = updateReplaceableTypes(lengths, cap, special, num);
+            templengths[0] = templengths[0] + 1;
+            templengths[randomType] = templengths[randomType] - 1;
+            replaceableTypes = updateReplaceableTypes(templengths, cap, special, num);
         }
 
         // If number of numbers is 0 and numbers are a requirement
-        if (lengths[1] == 0 && num) {
+        if (templengths[1] == 0 && num) {
             int randomTypeIndex = random.nextInt(replaceableTypes.size());
             int randomType = replaceableTypes.get(randomTypeIndex);
-            char[] temp = replaceCharacter(password, random, newPassword, randomType, 1);
+            char[] temp = replaceCharacter(newPassword, random, randomType, 1);
             newPassword = String.valueOf(temp);
-            lengths[1] = lengths[1] + 1;
-            lengths[randomType] = lengths[randomType] - 1;
-            replaceableTypes = updateReplaceableTypes(lengths, cap, special, num);
+            templengths[1] = templengths[1] + 1;
+            templengths[randomType] = templengths[randomType] - 1;
+            replaceableTypes = updateReplaceableTypes(templengths, cap, special, num);
         }
 
         // If number of special characters is 0 and special characters are a requirement
-        if (lengths[2] == 0 && special) {
+        if (templengths[2] == 0 && special) {
             int randomTypeIndex = random.nextInt(replaceableTypes.size());
             int randomType = replaceableTypes.get(randomTypeIndex);
-            char[] temp = replaceCharacter(password, random, newPassword, randomType, 0);
+            char[] temp = replaceCharacter(newPassword, random, randomType, 2);
             newPassword = String.valueOf(temp);
-            lengths[2] = lengths[2] + 1;
-            lengths[randomType] = lengths[randomType] - 1;
-            replaceableTypes = updateReplaceableTypes(lengths, cap, special, num);
+            templengths[2] = templengths[2] + 1;
+            templengths[randomType] = templengths[randomType] - 1;
+            replaceableTypes = updateReplaceableTypes(templengths, cap, special, num);
         }
 
         // If number of capital letters is 0 and capital letters are a requirement
-        if (lengths[3] == 0 && cap) {
+        if (templengths[3] == 0 && cap) {
             int randomTypeIndex = random.nextInt(replaceableTypes.size());
             int randomType = replaceableTypes.get(randomTypeIndex);
-            char[] temp = replaceCharacter(password, random, newPassword, randomType, 0);
+            char[] temp = replaceCharacter(newPassword, random, randomType, 3);
             newPassword = String.valueOf(temp);
-            lengths[3] = lengths[3] + 1;
-            lengths[randomType] = lengths[randomType] - 1;
-            replaceableTypes = updateReplaceableTypes(lengths, cap, special, num);
+            templengths[3] = templengths[3] + 1;
+            templengths[randomType] = templengths[randomType] - 1;
+            replaceableTypes = updateReplaceableTypes(templengths, cap, special, num);
         }
         this.lengths = templengths;
         return newPassword;
     }
 
-    private char[] replaceCharacter(String password, Random random, String newPassword, int randomType, int type) {
+    private char[] replaceCharacter(String password, Random random, int randomType, int type) {
         ArrayList<Integer> replaceableIndices = new ArrayList<Integer>();
         for (int i = 0; i < password.length(); i++) {
             switch(randomType) {
@@ -134,7 +134,7 @@ public class PasswordOnly extends PasswordGenerator {
                     break;
             }
         }
-        char[] temp = newPassword.toCharArray();
+        char[] temp = password.toCharArray();
         int tempIndex = random.nextInt(replaceableIndices.size());
         temp[replaceableIndices.get(tempIndex)] = letters.charAt(random.nextInt(letters.length()));
         switch(type) {
