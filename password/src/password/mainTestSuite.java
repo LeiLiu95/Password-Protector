@@ -9,7 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class mainTestSuite {
-	int testCases = 1000;
+	int testCases = 1000000;
 	static String numss = "0123456789";
 	static String specials= "!@#$%^&*()?";
 	static String capss= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
