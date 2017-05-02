@@ -111,13 +111,13 @@ public class EditActivity extends AppCompatActivity {
             if(!accountName.equals(newAccountNameBox.getText().toString())){
                 pass.setAccountName(newAccountNameBox.getText().toString());
             }
-            if(secAnswer1.equals(answer1Text.getText().toString())){
+            if(!secAnswer1.equals(answer1Text.getText().toString())){
                 list.set(0, answer1Text.getText().toString());
             }
-            if(secAnswer2.equals(answer2Text.getText().toString())){
+            if(!secAnswer2.equals(answer2Text.getText().toString())){
                 list.set(1, answer2Text.getText().toString());
             }
-            if(secAnswer3.equals(answer3Text.getText().toString())){
+            if(!secAnswer3.equals(answer3Text.getText().toString())){
                 list.set(2, answer3Text.getText().toString());
             }
             pass.addSecutityAnswers(list);
